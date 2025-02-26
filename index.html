@@ -1,64 +1,525 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bananada TV - Cartão de Visita</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .card {
-            background: #fff;
-            width: 350px;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: 3px solid #FFD700;
-        }
-        .logo {
-            width: 100px;
-            border-radius: 50%;
-        }
-        h1 {
-            color: #0057B7;
-        }
-        .live {
-            background: #FFD700;
-            color: #0057B7;
-            padding: 5px;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 10px 0;
-        }
-        .links a {
-            display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            font-weight: bold;
-            color: #0057B7;
-        }
-        .links a:hover {
-            color: #FFA500;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Carrossel de raças de Lineage II com classes e habilidades detalhadas">
+  <meta name="keywords" content="Lineage II, Raças, Classes, Habilidades, RPG">
+  <title>BananadaTv - Live todos os dias, das 6 da manhã até meio dia, exceto às quartas</title>
+  <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+  
+  /* Cabeçalho */
+  header {
+    background-color: #2c1a0d;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #d4af37;
+  }
+  
+  header .logo {
+    width: 120px;
+    margin-bottom: 10px;
+  }
+  
+  header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  header p.live-info {
+    font-size: 1.1em;
+    color: #b8860b;
+  }
+  
+  /* Seção dos Tipos de Habilidades */
+  .skills-types-section {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #2c1a0d;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
+  
+  .skills-types-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d4af37;
+  }
+  
+  .skills-types-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .skills-types-list li {
+    margin-bottom: 15px;
+  }
+  
+  .skill-type {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    fill: #d4af37;
+    flex-shrink: 0;
+  }
+  
+  .skill-type-content {
+    flex: 1;
+  }
+  
+  .skill-type-content strong {
+    color: #d4af37;
+  }
+  
+  .skill-type-content p {
+    margin-top: 5px;
+    color: #e0e0e0;
+  }
+  
+  hr {
+    border: 0;
+    height: 1px;
+    background: #d4af37;
+    margin: 20px 0;
+  }
+  
+  .application-list {
+    list-style: disc inside;
+    color: #e0e0e0;
+  }
+  
+  .application-list li {
+    margin-bottom: 10px;
+  }
+  
+  /* Seção do Carrossel de Vídeos */
+  .video-carousel-section {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #2c1a0d;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
+  
+  .video-carousel-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d4af37;
+  }
+  
+  /* Swiper Slide */
+  .video-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .video-content iframe {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+  }
+  
+  .video-content iframe:hover {
+    transform: scale(1.05);
+  }
+  
+  .video-content p {
+    max-width: 800px;
+    text-align: justify;
+    color: #e0e0e0;
+  }
+  
+  /* Rodapé */
+  footer {
+    background-color: #2c1a0d;
+    color: #d4af37;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  
+  footer .social-links a {
+    color: #d4af37;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+  }
+  
+  footer .social-links a:hover {
+    color: #b8860b;
+  }
+  
+  /* Swiper Navigation Buttons */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #d4af37;
+  }
+  
+  .swiper-pagination-bullet {
+    background: #d4af37;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #b8860b;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5); 
+  }
+  
+  .modal-content {
+    background-color: #2c1a0d;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 2px solid #d4af37;
+    width: 80%; 
+    max-width: 700px;
+    border-radius: 10px;
+    color: #e0e0e0;
+    position: relative;
+    animation: fadeIn 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .close-button {
+    color: #d4af37;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: #b8860b;
+  }
+  
+  /* Responsive Styles for Video Carousel and Modal */
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 90%;
+    }
+  
+    .skill-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .skill-icon {
+      margin-bottom: 10px;
+    }
+  
+    .skills-types-section h2 {
+      font-size: 1.5em;
+    }
+  
+    .skill-type-content p {
+      font-size: 0.9em;
+    }
+  }
+  </style>
+  
+  <!-- Swiper CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+  />
 </head>
 <body>
-    <div class="card">
-        <img class="logo" src="https://yt3.googleusercontent.com/tV0g-rPQ9ESJ7HbMdLNja7MpmBYcsC91u20qgNDtern2OMWgQTLBONCNBUCQmnTIS7ALLGqgfpU=s120-c-k-c0x00ffffff-no-rj" alt="Bananada TV Logo">
-        <h1>Bananada TV</h1>
-        <div class="live">Live todos os dias das 6h às 12h (exceto quartas)</div>
-        <div class="links">
-            <a href="https://discord.com/invite/qwgyvBf" target="_blank">💬 Discord</a>
-            <a href="https://www.youtube.com/@BananadaTv" target="_blank">🎥 YouTube</a>
-            <a href="https://twitch.tv/BananadaTv" target="_blank">🎮 Twitch</a>
+  <header>
+    <!-- Logo substituído por imagem -->
+    <img class="logo" src="https://yt3.googleusercontent.com/tV0g-rPQ9ESJ7HbMdLNja7MpmBYcsC91u20qgNDtern2OMWgQTLBONCNBUCQmnTIS7ALLGqgfpU=s120-c-k-c0x00ffffff-no-rj" alt="Logo BananadaTv">
+    <h1>BananadaTv</h1>
+    <p class="live-info">Live todos os dias, das 6 da manhã até meio dia, exceto às quartas.</p>
+  </header>
+
+  <!-- Seção do Carrossel de Vídeos -->
+  <section class="video-carousel-section">
+    <h2>Últimos Vídeos</h2>
+    <div class="swiper-container video-swiper">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <div class="video-content">
+            <iframe 
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/embed/fT_4qH6i-PU?si=_2l2mexaEysyp4dX" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+            <p>
+              Aprenda como otimizar o farm em <em>Lineage 2</em> utilizando múltiplas contas com a tríade, executando macros para dano em área (AOE). Neste vídeo, o apresentador compartilha dicas sobre as habilidades de tank e healer, macros essenciais, configurações de buffs, cura em grupo, e muito mais para maximizar a eficiência no jogo. Descubra como melhorar seu desempenho com a estratégia ideal e ajustes para enfrentar desafios no jogo.
+            </p>
+          </div>
         </div>
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <div class="video-content">
+            <iframe 
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/embed/tCGlUq8xPW8?si=IS-BErKwnExjyoxX" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+            <p>
+              Neste vídeo, o apresentador ensina como farmar de forma eficiente em <em>Lineage 2</em> utilizando múltiplas contas em uma estratégia de Single Target. São abordadas configurações ideais, habilidades de defesa e ataque, macros para buffs, cura e assistência, além de ajustes para o posicionamento e debuffs. Aprenda como configurar suas contas para evitar morrer durante o farm e como otimizar o uso de macros, com dicas essenciais para aumentar sua performance no jogo.
+            </p>
+          </div>
+        </div>
+        <!-- Adicione mais slides conforme necessário -->
+      </div>
+      <!-- Adicionando controles de navegação -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <!-- Adicionando paginação -->
+      <div class="swiper-pagination"></div>
     </div>
+  </section>
+
+  <!-- Seção dos Tipos de Habilidades -->
+  <section class="skills-types-section">
+    <h2>Tipos de Habilidades (Skills)</h2>
+    <ol class="skills-types-list">
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="30" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <path d="M32 12 L44 52 L20 52 Z" fill="#d4af37"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Active (Ativas):</strong>
+            <p>Habilidades que precisam ser ativadas manualmente pelo jogador. Geralmente têm efeitos imediatos, como causar dano, curar ou aplicar buffs/debuffs.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <rect x="12" y="12" width="40" height="40" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <circle cx="32" cy="32" r="10" fill="#d4af37"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Passive (Passivas):</strong>
+            <p>Habilidades que estão sempre ativas ou são acionadas automaticamente em determinadas condições. Exemplos: Aumento de atributos, resistências ou regeneração de HP/MP.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <polygon points="32,4 12,60 52,60" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <circle cx="32" cy="32" r="6" fill="#d4af37"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Learn Skill (Aprender Habilidade):</strong>
+            <p>Habilidades que podem ser aprendidas ou desbloqueadas ao atingir certos níveis ou completar missões.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <path d="M16 48 L48 48 L32 16 Z" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <line x1="32" y1="16" x2="32" y2="48" stroke="#d4af37" stroke-width="4"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Physical Skills (Habilidades Físicas):</strong>
+            <p>Habilidades relacionadas ao combate físico, como ataques corpo a corpo ou com armas.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <rect x="22" y="22" width="20" height="20" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <path d="M32 22 L32 42" stroke="#d4af37" stroke-width="4"/>
+            <path d="M22 32 L42 32" stroke="#d4af37" stroke-width="4"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Reinforcement Skills (Habilidades de Reforço):</strong>
+            <p>Habilidades que fortalecem o personagem ou aliados, como buffs de ataque, defesa ou velocidade.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="30" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <path d="M32 12 L44 52 L20 52 Z" fill="#d4af37"/>
+            <line x1="32" y1="20" x2="32" y2="44" stroke="#1a1a1a" stroke-width="4"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Physical Weakening Skill (Habilidades de Enfraquecimento Físico):</strong>
+            <p>Habilidades que debilitam inimigos, reduzindo seus atributos físicos, como defesa ou velocidade de ataque.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <polygon points="32,4 12,60 52,60" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <path d="M32 32 L42 60 L22 60 Z" fill="#d4af37"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Clan/Hero/Mentoring Skills (Habilidades de Clã/Herói/Mentoria):</strong>
+            <p>Habilidades específicas para membros de clãs, heróis ou mentores. Podem incluir buffs em grupo, habilidades exclusivas ou benefícios para aprendizes.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <circle cx="20" cy="20" r="10" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <circle cx="44" cy="44" r="10" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <line x1="30" y1="30" x2="34" y2="34" stroke="#d4af37" stroke-width="4"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Toggle Skill (Habilidades de Alternância):</strong>
+            <p>Habilidades que podem ser ligadas ou desligadas, consumindo recursos (como MP) enquanto ativas. Exemplos: Modos de combate ou auras.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-type">
+          <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <path d="M32 4 L60 60 L4 60 Z" stroke="#d4af37" stroke-width="4" fill="none"/>
+            <circle cx="32" cy="32" r="8" fill="#d4af37"/>
+          </svg>
+          <div class="skill-type-content">
+            <strong>Enchant Skill (Habilidades de Encantamento):</strong>
+            <p>Habilidades que melhoram equipamentos ou atributos temporariamente. Podem incluir encantamentos de armas, armaduras ou acessórios.</p>
+          </div>
+        </div>
+      </li>
+    </ol>
+    <hr>
+    <h3>Como Isso se Aplica ao Jogo</h3>
+    <p>Essa categorização ajuda os jogadores a entenderem melhor as habilidades disponíveis e como utilizá-las de forma estratégica. Por exemplo:</p>
+    <ul class="application-list">
+      <li><strong>Combate Físico:</strong> Foca em habilidades físicas e de enfraquecimento.</li>
+      <li><strong>Suporte:</strong> Utiliza habilidades de reforço e passivas para ajudar aliados.</li>
+      <li><strong>Magia:</strong> Depende de habilidades ativas e de encantamento para causar dano ou controlar o campo de batalha.</li>
+    </ul>
+  </section>
+  <!-- Fim da Seção dos Tipos de Habilidades -->
+
+  <footer>
+    <div class="social-links">
+      <a href="https://discord.com/invite/qwgyvBf" target="_blank">Discord</a>
+      <a href="https://www.youtube.com/@BananadaTv" target="_blank">YouTube</a>
+      <a href="https://twitch.tv/BananadaTv" target="_blank">Twitch</a>
+    </div>
+  </footer>
+
+  <!-- Modal for Skill Information -->
+  <div id="skill-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    // Inicializar Swiper para o Carrossel de Vídeos
+const videoSwiper = new Swiper('.video-swiper', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    slidesPerView: 1,
+    spaceBetween: 30,
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
+  
+  // Função para escapar caracteres HTML
+  function escapeHtml(text) {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;',
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+  }
+  
+  // Event delegation para ícones de habilidades
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('close-button')) {
+      document.getElementById('skill-modal').style.display = 'none';
+    }
+  });
+  
+  // Fechar modal ao clicar fora do conteúdo do modal
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('skill-modal');
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+  </script>
 </body>
 </html>
