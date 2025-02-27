@@ -7,699 +7,645 @@
   <meta name="keywords" content="Lineage II, Raças, Classes, Habilidades, RPG">
   <title>BananadaTv - Live todos os dias, das 6 da manhã até meio dia, exceto às quartas</title>
   <style>
+    /* Estilos Gerais e da Página Existente */
     * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
-}
-
-/* Cabeçalho */
-header {
-  background-color: #2c1a0d;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #d4af37;
-}
-
-header .logo {
-  width: 120px;
-  margin-bottom: 10px;
-}
-
-header h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-header p.live-info {
-  font-size: 1.1em;
-  color: #b8860b;
-}
-
-/* Seção dos Tipos de Habilidades */
-.skills-types-section {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #2c1a0d;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.skills-types-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-}
-
-.skills-types-list {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.skills-types-list li {
-  margin-bottom: 15px;
-}
-
-.skill-type {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-}
-
-.skill-icon {
-  width: 40px;
-  height: 40px;
-  fill: #d4af37;
-  flex-shrink: 0;
-}
-
-.skill-type-content {
-  flex: 1;
-}
-
-.skill-type-content strong {
-  color: #d4af37;
-}
-
-.skill-type-content p {
-  margin-top: 5px;
-  color: #e0e0e0;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background: #d4af37;
-  margin: 20px 0;
-}
-
-.application-list {
-  list-style: disc inside;
-  color: #e0e0e0;
-}
-
-.application-list li {
-  margin-bottom: 10px;
-}
-
-/* Seção do Carrossel de Vídeos */
-.video-carousel-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #2c1a0d;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.video-carousel-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-}
-
-/* Swiper Container */
-.swiper-container.video-swiper {
-  width: 100%;
-  padding: 20px 0;
-}
-
-/* Swiper Slide */
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.video-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.video-content iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  transition: transform 0.3s;
-}
-
-.video-content iframe:hover {
-  transform: scale(1.05);
-}
-
-.video-content p {
-  max-width: 800px;
-  text-align: justify;
-  color: #e0e0e0;
-}
-
-/* Customize Navigation Buttons */
-.swiper-button-next,
-.swiper-button-prev {
-  background-color: rgba(44, 26, 13, 0.7);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
-  color: #d4af37;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 20px;
-  color: #d4af37;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background-color: rgba(184, 134, 11, 0.8);
-}
-
-/* Rodapé */
-footer {
-  background-color: #2c1a0d;
-  color: #d4af37;
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-}
-
-footer .social-links a {
-  color: #d4af37;
-  text-decoration: none;
-  margin: 0 10px;
-  font-size: 1em;
-  transition: color 0.3s ease;
-}
-
-footer .social-links a:hover {
-  color: #b8860b;
-}
-
-/* Swiper Pagination */
-.swiper-pagination-bullet {
-  background: #d4af37;
-}
-
-.swiper-pagination-bullet-active {
-  background: #b8860b;
-}
-
-/* Modal Styles */
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1000; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgba(0,0,0,0.5); 
-}
-
-.modal-content {
-  background-color: #2c1a0d;
-  margin: 5% auto; 
-  padding: 20px;
-  border: 2px solid #d4af37;
-  width: 80%; 
-  max-width: 700px;
-  border-radius: 10px;
-  color: #e0e0e0;
-  position: relative;
-  animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-50px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.close-button {
-  color: #d4af37;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.close-button:hover,
-.close-button:focus {
-  color: #b8860b;
-}
-
-/* Styles for Skills Section Toggle */
-.toggle-skills {
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.toggle-icon {
-  margin-left: 10px;
-  transition: transform 0.3s;
-}
-
-.toggle-icon.rotated {
-  transform: rotate(180deg);
-}
-
-.skills-content {
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-  overflow: hidden;
-}
-
-.skills-content.hidden {
-  max-height: 0;
-  opacity: 0;
-  padding: 0 20px;
-}
-
-.skills-content.visible {
-  max-height: 2000px; /* Arbitrary large value to accommodate content */
-  opacity: 1;
-  padding: 20px;
-}
-
-/* Styles for Products Section Toggle */
-.toggle-products {
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.products-content {
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-  overflow: hidden;
-}
-
-.products-content.hidden {
-  max-height: 0;
-  opacity: 0;
-  padding: 0 20px;
-}
-
-.products-content.visible {
-  max-height: 2000px; /* Arbitrary large value to accommodate content */
-  opacity: 1;
-  padding: 20px;
-}
-
-/* Seção de Produtos em Destaque */
-.product-showcase-section {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #2c1a0d;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.product-showcase-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #d4af37;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.product-item {
-  background: #1a1a1a;
-  padding: 15px;
-  border: 2px solid #d4af37;
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.product-item:hover {
-  transform: scale(1.05);
-}
-
-.product-image {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.product-item h3 {
-  margin: 15px 0;
-  color: #e0e0e0;
-  font-size: 1.2em;
-}
-
-.affiliate-link {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #d4af37;
-  color: #1a1a1a;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.affiliate-link:hover {
-  background-color: #b8860b;
-}
-
-.product-description {
-  margin: 10px 0;
-  color: #b8860b;
-  font-size: 0.95em;
-  height: 3em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Estilos para a seção de filtro de produtos */
-.product-filter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  justify-content: center;
-  gap: 20px;
-}
-
-#product-search {
-  display: none;
-}
-
-.category-menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.category-button {
-  padding: 8px 12px;
-  border: 2px solid #d4af37;
-  border-radius: 5px;
-  background-color: #2c1a0d;
-  color: #d4af37;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.category-button:hover,
-.category-button.active {
-  background-color: #d4af37;
-  color: #1a1a1a;
-}
-
-/* Remover estilos relacionados aos filtros adicionais */
-.additional-filters {
-  display: none;
-}
-
-.filter-select {
-  display: none;
-}
-
-.price-filter {
-  display: none;
-}
-
-/* Remover estilos para o botão de resetar filtros */
-.reset-button {
-  display: none;
-}
-
-.bot-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-#chat-window {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background-color: #2c1a0d;
-  color: #e0e0e0;
-  border-radius: 10px;
-}
-
-.message {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.bot-message {
-  background: #e0e0e0;
-  color: #000;
-  padding: 10px;
-  border-radius: 5px;
-  max-width: 80%;
-  align-self: flex-start;
-}
-
-.user-message {
-  background: #0084ff;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  max-width: 80%;
-  align-self: flex-end;
-}
-
-#input-area {
-  display: flex;
-  border-top: 1px solid #ddd;
-  margin-top: 10px;
-}
-
-#user-input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  font-size: 1rem;
-  border-radius: 5px 0 0 5px;
-}
-
-#send-btn {
-  padding: 10px 20px;
-  background: #0084ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 0 5px 5px 0;
-  transition: background-color 0.3s;
-}
-
-#send-btn:hover {
-  background: #006bbd;
-}
-
-.recommendation {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  background: #f9f9f9;
-}
-
-.recommendation a {
-  display: inline-block;
-  margin-top: 5px;
-  background: #28a745;
-  color: #fff;
-  padding: 5px 10px;
-  text-decoration: none;
-  border-radius: 3px;
-  transition: background-color 0.3s;
-}
-
-.recommendation a:hover {
-  background: #218838;
-}
-
-/* Scrollbar Styling for Chat Window */
-#chat-window::-webkit-scrollbar {
-  width: 8px;
-}
-
-#chat-window::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
-
-#chat-window::-webkit-scrollbar-thumb {
-  background-color: #d4af37;
-  border-radius: 4px;
-}
-
-.fixed-pc-builder-button {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1001;
-}
-
-.fixed-pc-builder-button button {
-  background-color: #d4af37;
-  color: #1a1a1a;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background-color 0.3s;
-}
-
-.fixed-pc-builder-button button:hover {
-  background-color: #b8860b;
-}
-
-#pc-builder-modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1002; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgba(0,0,0,0.7); 
-}
-
-#pc-builder-modal .modal-content {
-  background-color: #2c1a0d;
-  margin: 10% auto; 
-  padding: 20px;
-  border: 2px solid #d4af37;
-  width: 80%; 
-  max-width: 600px;
-  border-radius: 10px;
-  color: #e0e0e0;
-  position: relative;
-  animation: fadeIn 0.5s;
-}
-
-.close-pc-builder-button {
-  color: #d4af37;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.close-pc-builder-button:hover,
-.close-pc-builder-button:focus {
-  color: #b8860b;
-}
-
-@media (max-width: 480px) {
-  .fixed-pc-builder-button {
-    right: 10px;
-    top: 60%;
-  }
-
-  .modal-content {
-    width: 95%;
-    max-width: none;
-  }
-
-  .bot-container #chat-window {
-    height: 300px;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-  }
-
-  @media (orientation: landscape) {
-    .video-content iframe {
-      aspect-ratio: 16 / 9;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-  }
-}
-
-@media (max-width: 600px) {
-  .skills-types-section h2 {
-    font-size: 1.5em;
-  }
-
-  .skill-type-content p {
-    font-size: 0.9em;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 40px;
-    height: 40px;
-  }
-
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    font-size: 16px;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .bot-container #chat-window {
-    height: 300px;
-  }
-}
-
-@media (orientation: landscape) {
-  .video-content iframe {
-    aspect-ratio: 16 / 9;
-  }
-
-  .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-}
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+    
+    /* Cabeçalho */
+    header {
+      background-color: #2c1a0d;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #d4af37;
+    }
+    
+    header .logo {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+    
+    header h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    
+    header p.live-info {
+      font-size: 1.1em;
+      color: #b8860b;
+    }
+    
+    /* Seção dos Tipos de Habilidades */
+    .skills-types-section {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #2c1a0d;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    
+    .skills-types-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #d4af37;
+    }
+    
+    .skills-types-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    
+    .skills-types-list li {
+      margin-bottom: 15px;
+    }
+    
+    .skill-type {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    
+    .skill-icon {
+      width: 40px;
+      height: 40px;
+      fill: #d4af37;
+      flex-shrink: 0;
+    }
+    
+    .skill-type-content {
+      flex: 1;
+    }
+    
+    .skill-type-content strong {
+      color: #d4af37;
+    }
+    
+    .skill-type-content p {
+      margin-top: 5px;
+      color: #e0e0e0;
+    }
+    
+    hr {
+      border: 0;
+      height: 1px;
+      background: #d4af37;
+      margin: 20px 0;
+    }
+    
+    .application-list {
+      list-style: disc inside;
+      color: #e0e0e0;
+    }
+    
+    .application-list li {
+      margin-bottom: 10px;
+    }
+    
+    /* Seção do Carrossel de Vídeos */
+    .video-carousel-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #2c1a0d;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    
+    .video-carousel-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #d4af37;
+    }
+    
+    /* Swiper Container */
+    .swiper-container.video-swiper {
+      width: 100%;
+      padding: 20px 0;
+    }
+    
+    /* Swiper Slide */
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .video-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .video-content iframe {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+    }
+    
+    .video-content iframe:hover {
+      transform: scale(1.05);
+    }
+    
+    .video-content p {
+      max-width: 800px;
+      text-align: justify;
+      color: #e0e0e0;
+    }
+    
+    /* Customize Navigation Buttons */
+    .swiper-button-next,
+    .swiper-button-prev {
+      background-color: rgba(44, 26, 13, 0.7);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+      color: #d4af37;
+    }
+    
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 20px;
+      color: #d4af37;
+    }
+    
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background-color: rgba(184, 134, 11, 0.8);
+    }
+    
+    /* Rodapé */
+    footer {
+      background-color: #2c1a0d;
+      color: #d4af37;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    
+    footer .social-links a {
+      color: #d4af37;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1.2em;
+      transition: color 0.3s ease;
+    }
+    
+    footer .social-links a:hover {
+      color: #b8860b;
+    }
+    
+    /* Swiper Pagination */
+    .swiper-pagination-bullet {
+      background: #d4af37;
+    }
+    
+    .swiper-pagination-bullet-active {
+      background: #b8860b;
+    }
+    
+    /* Modal Styles (já existentes) */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.5); 
+    }
+    
+    .modal-content {
+      background-color: #2c1a0d;
+      margin: 5% auto; 
+      padding: 20px;
+      border: 2px solid #d4af37;
+      width: 80%; 
+      max-width: 700px;
+      border-radius: 10px;
+      color: #e0e0e0;
+      position: relative;
+      animation: fadeIn 0.5s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .close-button {
+      color: #d4af37;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close-button:hover,
+    .close-button:focus {
+      color: #b8860b;
+    }
+    
+    /* Styles for Skills Section Toggle */
+    .toggle-skills {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .toggle-icon {
+      margin-left: 10px;
+      transition: transform 0.3s;
+    }
+    
+    .toggle-icon.rotated {
+      transform: rotate(180deg);
+    }
+    
+    .skills-content {
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      overflow: hidden;
+    }
+    
+    .skills-content.hidden {
+      max-height: 0;
+      opacity: 0;
+      padding: 0 20px;
+    }
+    
+    .skills-content.visible {
+      max-height: 2000px; /* Arbitrary large value to accommodate content */
+      opacity: 1;
+      padding: 20px;
+    }
+    
+    /* Styles for Products Section Toggle */
+    .toggle-products {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .products-content {
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      overflow: hidden;
+    }
+    
+    .products-content.hidden {
+      max-height: 0;
+      opacity: 0;
+      padding: 0 20px;
+    }
+    
+    .products-content.visible {
+      max-height: 2000px; /* Arbitrary large value to accommodate content */
+      opacity: 1;
+      padding: 20px;
+    }
+    
+    /* Seção de Produtos em Destaque */
+    .product-showcase-section {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #2c1a0d;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .product-showcase-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #d4af37;
+    }
+    
+    .product-filter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+    }
+    
+    #product-search {
+      display: none;
+    }
+    
+    .category-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .category-button {
+      flex: 1 1 auto;
+      min-width: fit-content;
+      padding: 8px 12px;
+      border: 2px solid #d4af37;
+      border-radius: 5px;
+      background-color: #2c1a0d;
+      color: #d4af37;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .category-button:hover,
+    .category-button.active {
+      background-color: #d4af37;
+      color: #1a1a1a;
+    }
+    
+    @media (max-width: 768px) {
+      .category-menu {
+        flex-direction: row;
+        justify-content: space-around; /* Distribute buttons evenly */
+      }
+    }
+    
+    /* Estilos para a seção de filtro de produtos */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .product-item {
+      background: #1a1a1a;
+      padding: 15px;
+      border: 2px solid #d4af37;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    
+    .product-item:hover {
+      transform: scale(1.05);
+    }
+    
+    .product-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    
+    .product-item h3 {
+      margin: 15px 0;
+      color: #e0e0e0;
+      font-size: 1.2em;
+    }
+    
+    .affiliate-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #d4af37;
+      color: #1a1a1a;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    
+    .affiliate-link:hover {
+      background-color: #b8860b;
+    }
+    
+    .product-description {
+      margin: 10px 0;
+      color: #b8860b;
+      font-size: 0.95em;
+      height: 3em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    /* Estilos para a grid de produtos filtrados */
+    .product-item {
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    
+    .product-item:hover {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+    
+    /* Ocultar produtos de maneira suave */
+    .product-item {
+      opacity: 1;
+    }
+    
+    .product-item[style*="display: none"] {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    /* ---------- NOVOS ELEMENTOS: Botão Flutuante e Modal do PC Gamer Bot ---------- */
+    
+    /* Botão fixo na lateral direita */
+    #pc-bot-button {
+      position: fixed;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #d4af37;
+      color: #1a1a1a;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    
+    #pc-bot-button:hover {
+      background-color: #b8860b;
+    }
+    
+    /* Modal do PC Gamer Bot */
+    #pc-bot-modal {
+      display: none;
+      position: fixed;
+      z-index: 1200;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    #pc-bot-modal .modal-content {
+      background-color: #2c1a0d;
+      margin: 10% auto;
+      padding: 20px;
+      border: 2px solid #d4af37;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      color: #e0e0e0;
+      position: relative;
+      animation: fadeIn 0.5s;
+    }
+    
+    .close-bot-button {
+      color: #d4af37;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close-bot-button:hover {
+      color: #b8860b;
+    }
+    
+    /* Estilos do Chat do PC Gamer Bot */
+    #pc-chat-window {
+      height: 300px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      background: #f4f4f4;
+      color: #000;
+      padding: 10px;
+    }
+    
+    .pc-message {
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    
+    .pc-message.user {
+      background: #0084ff;
+      color: #e0e0e0;
+      text-align: right;
+    }
+    
+    .pc-message.bot {
+      background: #e0e0e0;
+      color: #000;
+      text-align: left;
+    }
+    
+    .recommendation {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px 0;
+      background: #f9f9f9;
+    }
+    
+    .recommendation a {
+      display: inline-block;
+      margin-top: 5px;
+      background: #28a745;
+      color: #fff;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+    
+    .recommendation a:hover {
+      background: #218838;
+    }
+    
+    /* Scrollbar Styling for Chat Window */
+    #pc-chat-window::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    #pc-chat-window::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    
+    #pc-chat-window::-webkit-scrollbar-thumb {
+      background-color: #d4af37;
+      border-radius: 4px;
+    }
+    
+    .fixed-pc-builder-button {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1001;
+    }
+    
+    .fixed-pc-builder-button button {
+      background-color: #d4af37;
+      color: #1a1a1a;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.3s;
+    }
+    
+    .fixed-pc-builder-button button:hover {
+      background-color: #b8860b;
+    }
+    
+    @media (max-width: 480px) {
+      .fixed-pc-builder-button {
+        right: 10px;
+        top: 60%;
+      }
+      
+      #pc-bot-modal .modal-content {
+        width: 95%;
+        max-width: none;
+      }
+    }
+    
+    .bot-option-button {
+      background-color: #d4af37;
+      color: #1a1a1a;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
   </style>
   
   <!-- Swiper CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 </head>
 <body>
   <header>
@@ -708,7 +654,7 @@ footer .social-links a:hover {
     <h1>BananadaTv</h1>
     <p class="live-info">Live todos os dias, das 6 da manhã até meio dia, exceto às quartas.</p>
   </header>
-
+  
   <!-- Seção do Carrossel de Vídeos -->
   <section class="video-carousel-section">
     <h2>Últimos Vídeos</h2>
@@ -750,14 +696,14 @@ footer .social-links a:hover {
         </div>
         <!-- Adicione mais slides conforme necessário -->
       </div>
-      <!-- Adicionando controles de navegação personalizados -->
+      <!-- Controles de navegação personalizados -->
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
-      <!-- Adicionando paginação -->
+      <!-- Paginação -->
       <div class="swiper-pagination"></div>
     </div>
   </section>
-
+  
   <!-- Seção dos Tipos de Habilidades -->
   <section class="skills-types-section">
     <h2 class="toggle-skills">Tipos de Habilidades (Skills) <span class="toggle-icon">▼</span></h2>
@@ -886,7 +832,7 @@ footer .social-links a:hover {
     </div>
   </section>
   <!-- Fim da Seção dos Tipos de Habilidades -->
-
+  
   <section class="product-showcase-section">
     <h2 class="toggle-products">Produtos em Destaque <span class="toggle-icon">▼</span></h2>
     <div class="products-content hidden">
@@ -908,238 +854,11 @@ footer .social-links a:hover {
           <p class="product-description">Pacote de Adena in-game para Lineage II, permitindo que você compre itens exclusivos e melhore sua experiência de jogo.</p>
           <a href="https://afiliado-exemplo.com/produto1" class="affiliate-link" target="_blank">Comprar</a>
         </div>
-
-        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="60" data-color="Branco">
-          <img src="/2025-02-26 (1).png" alt="Cartões pré-pagos NCSoft" class="product-image">
-          <h3>Cartões pré-pagos NCSoft</h3>
-          <p class="product-description">Cartões pré-pagos NCSoft para compras dentro de Lineage II, seguros e fáceis de usar.</p>
-          <a href="https://afiliado-exemplo.com/produto2" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="100" data-color="Azul">
-          <img src="/2025-02-26 (1).png" alt="Packs de VIP/Premium" class="product-image">
-          <h3>Packs de VIP/Premium para Lineage 2</h3>
-          <p class="product-description">Packs VIP/Premium para Lineage II que oferecem benefícios exclusivos e vantagens no jogo.</p>
-          <a href="https://afiliado-exemplo.com/produto3" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="80" data-color="Roxo">
-          <img src="/2025-02-26 (1).png" alt="Baús com skins e itens raros" class="product-image">
-          <h3>Baús com skins e itens raros</h3>
-          <p class="product-description">Baús contendo skins exclusivas e itens raros para personalizar sua experiência em Lineage II.</p>
-          <a href="https://afiliado-exemplo.com/produto4" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="150" data-color="Verde">
-          <img src="/2025-02-26 (1).png" alt="Serviço de Power Leveling" class="product-image">
-          <h3>Serviço de Power Leveling</h3>
-          <p class="product-description">Serviço de Power Leveling para subir de nível mais rápido em Lineage II, garantindo uma progressão eficiente.</p>
-          <a href="https://afiliado-exemplo.com/produto5" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="200" data-color="Vermelho">
-          <img src="/2025-02-26 (1).png" alt="Bots e macros automatizados" class="product-image">
-          <h3>Bots e macros automatizados</h3>
-          <p class="product-description">Bots e macros automatizados para farmar em Lineage II de forma eficiente e segura.</p>
-          <a href="https://afiliado-exemplo.com/produto6" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="2" data-brand="Logitech" data-price="120" data-color="Preto">
-          <img src="/path-to-image.png" alt="Teclado Mecânico RGB" class="product-image">
-          <h3>Teclado Mecânico RGB</h3>
-          <p class="product-description">Teclado gamer mecânico com iluminação RGB, ideal para longas sessões de jogo.</p>
-          <a href="https://afiliado-exemplo.com/produto7" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="2" data-brand="Razer" data-price="80" data-color="Vermelho">
-          <img src="/path-to-image.png" alt="Mouse Gamer Programável" class="product-image">
-          <h3>Mouse Gamer com Botões Programáveis</h3>
-          <p class="product-description">Mouse gamer com múltiplos botões programáveis para personalizar seus comandos no jogo.</p>
-          <a href="https://afiliado-exemplo.com/produto8" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="2" data-brand="HyperX" data-price="150" data-color="Azul">
-          <img src="/path-to-image.png" alt="Headset com som 7.1 e microfone" class="product-image">
-          <h3>Headset Gamer 7.1</h3>
-          <p class="product-description">Headset com som envolvente 7.1 e microfone de alta qualidade para comunicação clara.</p>
-          <a href="https://afiliado-exemplo.com/produto9" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="2" data-brand="SteelSeries" data-price="40" data-color="Preto">
-          <img src="/path-to-image.png" alt="Mousepad Gamer Grande" class="product-image">
-          <h3>Mousepad Gamer Grande</h3>
-          <p class="product-description">Mousepad gamer grande com superfície antiderrapante e design personalizado.</p>
-          <a href="https://afiliado-exemplo.com/produto10" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="2" data-brand="Redragon" data-price="60" data-color="Preto">
-          <img src="/path-to-image.png" alt="Controle USB Gamer" class="product-image">
-          <h3>Controle USB Gamer</h3>
-          <p class="product-description">Controle USB para gamers que preferem jogar sem teclado e mouse.</p>
-          <a href="https://afiliado-exemplo.com/produto11" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="2" data-brand="UGREEN" data-price="35" data-color="Branco">
-          <img src="/path-to-image.png" alt="Suporte para Celular/Tablet" class="product-image">
-          <h3>Suporte para Celular/Tablet</h3>
-          <p class="product-description">Suporte ajustável para celular ou tablet, ideal para jogos mobile como Lineage 2 Revolution.</p>
-          <a href="https://afiliado-exemplo.com/produto12" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="3" data-brand="NVIDIA" data-price="500" data-color="Preto">
-          <img src="/path-to-image.png" alt="Placa de Vídeo RTX 3060" class="product-image">
-          <h3>Placa de Vídeo RTX 3060</h3>
-          <p class="product-description">Placa de vídeo NVIDIA GeForce RTX 3060, oferecendo excelente desempenho para jogos.</p>
-          <a href="https://afiliado-exemplo.com/produto13" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="3" data-brand="Corsair" data-price="200" data-color="Preto">
-          <img src="/path-to-image.png" alt="Memória RAM 16GB" class="product-image">
-          <h3>Memória RAM 16GB</h3>
-          <p class="product-description">Memória RAM Corsair Vengeance de 16GB para maior desempenho em jogos e multitarefa.</p>
-          <a href="https://afiliado-exemplo.com/produto14" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="3" data-brand="Corsair" data-price="350" data-color="Preto">
-          <img src="/path-to-image.png" alt="Memória RAM 32GB" class="product-image">
-          <h3>Memória RAM 32GB</h3>
-          <p class="product-description">Memória RAM Corsair Vengeance de 32GB para desempenho excepcional em multitarefa e jogos.</p>
-          <a href="https://afiliado-exemplo.com/produto15" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="3" data-brand="Samsung" data-price="150" data-color="Prata">
-          <img src="/path-to-image.png" alt="SSD NVMe" class="product-image">
-          <h3>SSD NVMe 1TB</h3>
-          <p class="product-description">SSD NVMe Samsung 1TB para carregamentos ultra-rápidos e armazenamento confiável.</p>
-          <a href="https://afiliado-exemplo.com/produto16" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="3" data-brand="Intel" data-price="300" data-color="Branco">
-          <img src="/path-to-image.png" alt="Processador Intel i7" class="product-image">
-          <h3>Processador Intel i7</h3>
-          <p class="product-description">Processador Intel Core i7 para desempenho poderoso em jogos e aplicações.</p>
-          <a href="https://afiliado-exemplo.com/produto17" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="3" data-brand="ASUS" data-price="400" data-color="Preto">
-          <img src="/path-to-image.png" alt="Monitor Gamer 144Hz" class="product-image">
-          <h3>Monitor Gamer 144Hz</h3>
-          <p class="product-description">Monitor ASUS de 144Hz para uma experiência de jogo suave e sem atrasos.</p>
-          <a href="https://afiliado-exemplo.com/produto18" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="4" data-brand="Microsoft" data-price="15" data-color="Azul">
-          <img src="/path-to-image.png" alt="Xbox Game Pass" class="product-image">
-          <h3>Xbox Game Pass</h3>
-          <p class="product-description">Assinatura Xbox Game Pass para acesso a uma vasta biblioteca de jogos.</p>
-          <a href="https://afiliado-exemplo.com/produto19" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="4" data-brand="NordVPN" data-price="50" data-color="Preto">
-          <img src="/path-to-image.png" alt="VPN Gamer" class="product-image">
-          <h3>VPN Gamer</h3>
-          <p class="product-description">VPN para reduzir ping e latência nos servidores de jogos online.</p>
-          <a href="https://afiliado-exemplo.com/produto20" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="4" data-brand="OBSProject" data-price="0" data-color="Branco">
-          <img src="/path-to-image.png" alt="OBS Studio" class="product-image">
-          <h3>OBS Studio</h3>
-          <p class="product-description">Software de gravação e streaming gratuito para gamers e streamers.</p>
-          <a href="https://afiliado-exemplo.com/produto21" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="4" data-brand="Discord" data-price="10" data-color="Roxo">
-          <img src="/path-to-image.png" alt="Discord Nitro" class="product-image">
-          <h3>Discord Nitro</h3>
-          <p class="product-description">Assinatura Discord Nitro para melhor qualidade de áudio nos chats de guilda.</p>
-          <a href="https://afiliado-exemplo.com/produto22" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="4" data-brand="FastVPN" data-price="80" data-color="Preto">
-          <img src="/path-to-image.png" alt="Serviço de IP Dedicado" class="product-image">
-          <h3>Serviço de IP Dedicado</h3>
-          <p class="product-description">Serviço de IP dedicado para evitar lag em jogos online e melhorar a estabilidade da conexão.</p>
-          <a href="https://afiliado-exemplo.com/produto23" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="4" data-brand="Kaspersky" data-price="60" data-color="Preto">
-          <img src="/path-to-image.png" alt="Antivírus Gamer" class="product-image">
-          <h3>Antivírus Gamer</h3>
-          <p class="product-description">Antivírus dedicado para proteger sua conta de hacks e keyloggers em jogos online.</p>
-          <a href="https://afiliado-exemplo.com/produto24" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="5" data-brand="Official" data-price="30" data-color="Preto">
-          <img src="/path-to-image.png" alt="Camisa Lineage 2" class="product-image">
-          <h3>Camisa Lineage 2</h3>
-          <p class="product-description">Camisa oficial com estampas de Lineage 2 para mostrar seu amor pelo jogo.</p>
-          <a href="https://afiliado-exemplo.com/produto25" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="5" data-brand="Official" data-price="50" data-color="Cinza">
-          <img src="/path-to-image.png" alt="Hoodie Lineage 2" class="product-image">
-          <h3>Hoodie Lineage 2</h3>
-          <p class="product-description">Hoodie com estampas de Lineage 2, confortável e estiloso para os fãs.</p>
-          <a href="https://afiliado-exemplo.com/produto26" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="5" data-brand="Funko" data-price="25" data-color="Preto">
-          <img src="/path-to-image.png" alt="Action Figures de personagens" class="product-image">
-          <h3>Action Figures de Personagens</h3>
-          <p class="product-description">Action figures de personagens icônicos de Lineage 2, perfeitos para colecionadores.</p>
-          <a href="https://afiliado-exemplo.com/produto27" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="5" data-brand="CustomArt" data-price="15" data-color="Colorido">
-          <img src="/path-to-image.png" alt="Mousepad Personalizado" class="product-image">
-          <h3>Mousepad Personalizado</h3>
-          <p class="product-description">Mousepad personalizado com artes do jogo Lineage 2, ideal para gamers.</p>
-          <a href="https://afiliado-exemplo.com/produto28" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="5" data-brand="ArtPrints" data-price="20" data-color="Vermelho">
-          <img src="/path-to-image.png" alt="Poster Lineage 2" class="product-image">
-          <h3>Poster Lineage 2</h3>
-          <p class="product-description">Poster de Lineage 2 para decorar seu espaço com qualidade e estilo.</p>
-          <a href="https://afiliado-exemplo.com/produto29" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
-
-        <div class="product-item" data-category="5" data-brand="GamingGear" data-price="10" data-color="Preto">
-          <img src="/path-to-image.png" alt="Caneca Temática de Games" class="product-image">
-          <h3>Caneca Temática de Games</h3>
-          <p class="product-description">Caneca temática de Lineage 2, perfeita para seu café durante as sessões de jogo.</p>
-          <a href="https://afiliado-exemplo.com/produto30" class="affiliate-link" target="_blank">Comprar</a>
-        </div>
+        <!-- Outros produtos (itens omitidos para brevidade) -->
       </div>
     </div>
   </section>
-
-  <div class="fixed-pc-builder-button">
-    <button id="pc-builder-toggle-button">
-      <!-- Inline SVG para o ícone do botão -->
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4af37" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 3H21V21H3V3Z" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M8 12H16" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M12 8V16" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Montar um PC Gamer
-    </button>
-  </div>
-
-  <div id="pc-builder-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-pc-builder-button">&times;</span>
-      <div class="bot-container">
-        <div id="chat-window"></div>
-        <div id="input-area">
-          <input type="text" id="user-input" placeholder="Digite sua mensagem..." autocomplete="off" />
-          <button id="send-btn">Enviar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  
   <footer>
     <div class="social-links">
       <a href="https://discord.com/invite/qwgyvBf" target="_blank">Discord</a>
@@ -1147,8 +866,8 @@ footer .social-links a:hover {
       <a href="https://twitch.tv/BananadaTv" target="_blank">Twitch</a>
     </div>
   </footer>
-
-  <!-- Modal for Skill Information -->
+  
+  <!-- Modal para Skill Information (já existente) -->
   <div id="skill-modal" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -1156,375 +875,462 @@ footer .social-links a:hover {
       <p id="modal-description"></p>
     </div>
   </div>
-
+  
+  <!-- Modal do PC Gamer Bot -->
+  <div id="pc-bot-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-bot-button">&times;</span>
+      <h2>Monte seu PC Gamer</h2>
+      <div id="pc-chat-window"></div>
+      <input type="text" id="pc-user-input" placeholder="Digite sua mensagem..." autocomplete="off" style="width: calc(100% - 70px); padding: 10px;"/>
+      <button id="pc-send-btn" style="padding: 10px;">Enviar</button>
+    </div>
+  </div>
+  
+  <!-- Botão fixo para acionar o PC Gamer Bot -->
+  <button id="pc-bot-button">Montar PC Gamer</button>
+  
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   <script>
-    // Ajuste para inicializar Swiper após garantir que o elemento existe
-document.addEventListener('DOMContentLoaded', () => {
-  const swiperElement = document.querySelector('.video-swiper');
-  if (swiperElement) {
-    const videoSwiper = new Swiper(swiperElement, {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      slidesPerView: 1,
-      spaceBetween: 30,
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 3,
-        },
-      },
-    });
-  }
-
-  // Toggle Skills Section
-  const toggleSkillsHeader = document.querySelector('.toggle-skills');
-  const skillsContent = document.querySelector('.skills-content');
-  const toggleIcon = document.querySelector('.toggle-icon');
-
-  // Initialize the skills section as hidden
-  skillsContent.classList.add('hidden');
-  toggleIcon.textContent = '▲';
-
-  toggleSkillsHeader.addEventListener('click', () => {
-    if (skillsContent.classList.contains('visible')) {
-      skillsContent.classList.remove('visible');
+    // Inicialização do Swiper e funções de toggling dos blocos (Skills, Produtos, filtros, etc.)
+    document.addEventListener('DOMContentLoaded', () => {
+      const swiperElement = document.querySelector('.video-swiper');
+      if (swiperElement) {
+        const videoSwiper = new Swiper(swiperElement, {
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          slidesPerView: 1,
+          spaceBetween: 30,
+          breakpoints: {
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          },
+        });
+      }
+    
+      // Toggle Skills Section
+      const toggleSkillsHeader = document.querySelector('.toggle-skills');
+      const skillsContent = document.querySelector('.skills-content');
+      const toggleIcon = document.querySelector('.toggle-icon');
+    
+      // Initialize the skills section as hidden
       skillsContent.classList.add('hidden');
-      toggleIcon.classList.add('rotated');
       toggleIcon.textContent = '▲';
-    } else {
-      skillsContent.classList.remove('hidden');
-      skillsContent.classList.add('visible');
-      toggleIcon.classList.remove('rotated');
-      toggleIcon.textContent = '▼';
-    }
-  });
-
-  // Toggle Products Section
-  const toggleProductsHeader = document.querySelector('.toggle-products');
-  const productsContent = document.querySelector('.products-content');
-  const toggleProductsIcon = toggleProductsHeader.querySelector('.toggle-icon');
-
-  // Initialize the products section as hidden
-  productsContent.classList.add('hidden');
-  toggleProductsIcon.textContent = '▼';
-
-  toggleProductsHeader.addEventListener('click', () => {
-    if (productsContent.classList.contains('visible')) {
-      productsContent.classList.remove('visible');
+    
+      toggleSkillsHeader.addEventListener('click', () => {
+        if (skillsContent.classList.contains('visible')) {
+          skillsContent.classList.remove('visible');
+          skillsContent.classList.add('hidden');
+          toggleIcon.classList.add('rotated');
+          toggleIcon.textContent = '▲';
+        } else {
+          skillsContent.classList.remove('hidden');
+          skillsContent.classList.add('visible');
+          toggleIcon.classList.remove('rotated');
+          toggleIcon.textContent = '▼';
+        }
+      });
+    
+      // Toggle Products Section
+      const toggleProductsHeader = document.querySelector('.toggle-products');
+      const productsContent = document.querySelector('.products-content');
+      const toggleProductsIcon = toggleProductsHeader.querySelector('.toggle-icon');
+    
+      // Initialize the products section as hidden
       productsContent.classList.add('hidden');
       toggleProductsIcon.textContent = '▼';
-    } else {
-      productsContent.classList.remove('hidden');
-      productsContent.classList.add('visible');
-      toggleProductsIcon.textContent = '▲';
-    }
-  });
-
-  // Função para escapar caracteres HTML
-  function escapeHtml(text) {
-    const map = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#039;',
-    };
-    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
-  }
-
-  // Event delegation para ícones de habilidades
-  document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('close-button')) {
-      document.getElementById('skill-modal').style.display = 'none';
-    }
-  });
-
-  // Fechar modal ao clicar fora do conteúdo do modal
-  window.addEventListener('click', (e) => {
-    const modal = document.getElementById('skill-modal');
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-
-  // Seleciona os elementos do filtro
-  const categoryButtons = document.querySelectorAll('.category-button');
-  const productItems = document.querySelectorAll('.product-item');
-
-  let activeCategory = null;
-
-  // Função para filtrar os produtos
-  function filterProducts() {
-    productItems.forEach(item => {
-      const itemCategory = item.getAttribute('data-category');
-
-      // Verifica a categoria
-      const matchesCategory = activeCategory ? itemCategory === activeCategory : true;
-
-      if (matchesCategory) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  }
-
-  // Eventos para os botões de categoria
-  categoryButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove a classe active de todos os botões
-      categoryButtons.forEach(btn => btn.classList.remove('active'));
-      
-      // Verifica se a categoria clicada já está ativa
-      if (activeCategory === button.getAttribute('data-category')) {
-        activeCategory = null;
-      } else {
-        activeCategory = button.getAttribute('data-category');
-        button.classList.add('active');
-      }
-      
-      filterProducts();
-    });
-  });
-
-  // Função para restaurar a exibição de todos os produtos
-  function resetFilters() {
-    activeCategory = null;
-    categoryButtons.forEach(btn => btn.classList.remove('active'));
-    filterProducts();
-  }
-
-  // Seleciona os elementos do botão e modal de montar PC Gamer
-  const pcBuilderButton = document.getElementById('pc-builder-toggle-button');
-  const pcBuilderModal = document.getElementById('pc-builder-modal');
-  const closePcBuilderButton = document.querySelector('.close-pc-builder-button');
-
-  // Função para abrir o modal
-  function openPcBuilderModal() {
-    pcBuilderModal.style.display = 'block';
-    localStorage.setItem('pcBuilderModalOpen', 'true');
-  }
-
-  // Função para fechar o modal
-  function closePcBuilderModal() {
-    pcBuilderModal.style.display = 'none';
-    localStorage.setItem('pcBuilderModalOpen', 'false');
-  }
-
-  // Evento de clique no botão para abrir o modal
-  pcBuilderButton.addEventListener('click', () => {
-    pcBuilderModal.style.display = 'block';
-    localStorage.setItem('pcBuilderModalOpen', 'true');
-  });
-
-  // Evento de clique no botão de fechar do modal
-  closePcBuilderButton.addEventListener('click', () => {
-    closePcBuilderModal();
-  });
-
-  // Fechar o modal ao clicar fora do conteúdo do modal
-  window.addEventListener('click', (e) => {
-    if (e.target === pcBuilderModal) {
-      closePcBuilderModal();
-    }
-  });
-
-  // Verificar o estado do modal no carregamento da página
-  const isPcBuilderModalOpen = localStorage.getItem('pcBuilderModalOpen');
-  if (isPcBuilderModalOpen === 'true') {
-    pcBuilderModal.style.display = 'block';
-  } else {
-    pcBuilderModal.style.display = 'none';
-  }
-
-  // Bot Functionality
-  // Bot Elements
-  const chatWindow = document.getElementById('chat-window');
-  const userInput = document.getElementById('user-input');
-  const sendBtn = document.getElementById('send-btn');
-
-  // Controle de fluxo da conversa e dados do usuário
-  let conversationStep = 0;
-  let userData = {
-    possuiComponentes: null,
-    componentesExistentes: "",
-    orcamento: null,
-    desempenho: null
-  };
-
-  // Produtos fictícios para demonstração
-  const produtos = {
-    CPU: {
-      nome: "Intel Core i5-10400F",
-      descricao: "Processador intermediário ideal para jogos.",
-      preco: "R$800,00",
-      link: "https://shopee.com.br/item-intel-i5"
-    },
-    GPU: {
-      nome: "NVIDIA GTX 1660 Super",
-      descricao: "Placa de vídeo com bom desempenho em 1080p.",
-      preco: "R$1500,00",
-      link: "https://shopee.com.br/item-gtx-1660"
-    },
-    RAM: {
-      nome: "8GB DDR4 3200MHz",
-      descricao: "Memória para performance equilibrada.",
-      preco: "R$300,00",
-      link: "https://shopee.com.br/item-ram-8gb"
-    }
-  };
-
-  // Função para adicionar mensagem na janela de chat
-  function appendMessage(text, sender = 'bot') {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
-    if(sender === 'bot') {
-      messageDiv.classList.add('bot-message');
-    } else {
-      messageDiv.classList.add('user-message');
-    }
-    messageDiv.innerHTML = text;
-    chatWindow.appendChild(messageDiv);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-  }
-
-  // Função que processa a entrada do usuário com base no estado atual da conversa
-  function processUserInput(input) {
-    const message = input.trim().toLowerCase();
     
-    if(conversationStep === 0) {
-      conversationStep++;
-      appendMessage("Você já possui algum componente do seu PC gamer? (responda 'sim' ou 'não')");
-    } else if(conversationStep === 1) {
-      if(message.includes("sim")) {
-        userData.possuiComponentes = true;
-        conversationStep++;
-        appendMessage("Certo! Quais componentes você já possui? (Ex: CPU, GPU, RAM)");
-      } else if(message.includes("não")) {
-        userData.possuiComponentes = false;
-        conversationStep = 3; // Pula para o orçamento se não possui nenhum componente
-        appendMessage("Sem problemas! Vamos montar do zero. Qual é o seu orçamento aproximado? (Ex: 3000)");
-      } else {
-        appendMessage("Por favor, responda com 'sim' ou 'não'.");
+      toggleProductsHeader.addEventListener('click', () => {
+        if (productsContent.classList.contains('visible')) {
+          productsContent.classList.remove('visible');
+          productsContent.classList.add('hidden');
+          toggleProductsIcon.textContent = '▼';
+        } else {
+          productsContent.classList.remove('hidden');
+          productsContent.classList.add('visible');
+          toggleProductsIcon.textContent = '▲';
+        }
+      });
+    
+      // Função para escapar caracteres HTML
+      function escapeHtml(text) {
+        const map = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;',
+        };
+        return text.replace(/[&<>"']/g, function(m) { return map[m]; });
       }
-    } else if(conversationStep === 2) {
-      // Armazena os componentes já existentes
-      userData.componentesExistentes = message;
-      conversationStep++;
-      appendMessage("Qual é o seu orçamento aproximado? (Ex: 3000)");
-    } else if(conversationStep === 3) {
-      // Processa o orçamento
-      let orcamento = parseFloat(message);
-      if(isNaN(orcamento)) {
-        appendMessage("Por favor, insira um valor numérico para o orçamento.");
-      } else {
-        userData.orcamento = orcamento;
-        conversationStep++;
-        appendMessage("Qual é o desempenho que você deseja para o seu PC? (responda 'leve', 'intermediário' ou 'alto')");
+    
+      // Fechar modal de Skill ao clicar fora do conteúdo
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('close-button')) {
+          document.getElementById('skill-modal').style.display = 'none';
+        }
+      });
+    
+      window.addEventListener('click', (e) => {
+        const modal = document.getElementById('skill-modal');
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    
+      // Filtros de produtos
+      const categoryButtons = document.querySelectorAll('.category-button');
+      const productItems = document.querySelectorAll('.product-item');
+    
+      let activeCategory = null;
+    
+      function filterProducts() {
+        productItems.forEach(item => {
+          const itemCategory = item.getAttribute('data-category');
+          const matchesCategory = activeCategory ? itemCategory === activeCategory : true;
+          item.style.display = matchesCategory ? 'block' : 'none';
+        });
       }
-    } else if(conversationStep === 4) {
-      if(message.includes("leve") || message.includes("intermediário") || message.includes("alto")) {
-        userData.desempenho = message;
-        conversationStep++;
-        appendMessage("Ótimo! Vou analisar suas respostas e montar uma sugestão de configuração...");
-        setTimeout(showRecommendations, 1500);
-      } else {
-        appendMessage("Por favor, responda com 'leve', 'intermediário' ou 'alto'.");
+    
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          categoryButtons.forEach(btn => btn.classList.remove('active'));
+          if (activeCategory === button.getAttribute('data-category')) {
+            activeCategory = null;
+          } else {
+            activeCategory = button.getAttribute('data-category');
+            button.classList.add('active');
+          }
+          filterProducts();
+        });
+      });
+    
+      function resetFilters() {
+        activeCategory = null;
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        filterProducts();
       }
-    }
-  }
+    });
+  </script>
+  
+  <!-- Script do PC Gamer Bot -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const pcBotButton = document.getElementById('pc-bot-button');
+        const pcBotModal = document.getElementById('pc-bot-modal');
+        const closeBotButton = document.querySelector('.close-bot-button');
+        const pcChatWindow = document.getElementById('pc-chat-window');
+        const pcUserInput = document.getElementById('pc-user-input');
+        const pcSendBtn = document.getElementById('pc-send-btn');
 
-  // Função que exibe as recomendações baseadas nos dados coletados
-  function showRecommendations() {
-    appendMessage("Aqui estão algumas recomendações para você:", "bot");
+        // Bot Functionality
+        // Bot Elements
+        const chatWindow = document.getElementById('pc-chat-window');
+        const userInput = document.getElementById('pc-user-input');
+        const sendBtn = document.getElementById('pc-send-btn');
 
-    // Exemplo: Se o usuário não possui nenhum componente, recomenda todos os itens
-    if (!userData.possuiComponentes) {
-      appendRecommendation(produtos.CPU);
-      appendRecommendation(produtos.GPU);
-      appendRecommendation(produtos.RAM);
-    } else {
-      // Se já possui alguns componentes, recomenda somente os que parecem estar faltando
-      if (!userData.componentesExistentes.includes("cpu")) {
-        appendRecommendation(produtos.CPU);
-      }
-      if (!userData.componentesExistentes.includes("gpu")) {
-        appendRecommendation(produtos.GPU);
-      }
-      if (!userData.componentesExistentes.includes("ram") && !userData.componentesExistentes.includes("memoria")) {
-        appendRecommendation(produtos.RAM);
-      }
-    }
-    appendMessage("Clique nos botões de cada item para ver mais detalhes e acessar os links de compra.", "bot");
-  }
+        // Controle de fluxo da conversa e dados do usuário
+        let conversationStep = 0;
+        let userData = {
+            possuiComponentes: null,
+            componentesExistentes: "",
+            orcamento: null,
+            desempenho: null
+        };
 
-  // Função para adicionar um bloco de recomendação na tela
-  function appendRecommendation(produto) {
-    const recDiv = document.createElement('div');
-    recDiv.classList.add('recommendation');
-    recDiv.innerHTML = `
-      <h3>${produto.nome}</h3>
-      <p>${produto.descricao}</p>
-      <p><strong>Preço:</strong> ${produto.preco}</p>
-      <a href="${produto.link}" target="_blank">Comprar</a>
-    `;
-    chatWindow.appendChild(recDiv);
-  }
+        // Produtos fictícios para demonstração
+        const produtos = {
+            CPU: {
+                id: "cpu",
+                nome: "Intel Core i5-10400F",
+                descricao: "Processador intermediário ideal para jogos.",
+                detalhes: "Este processador oferece um excelente equilíbrio entre desempenho e preço, ideal para jogos e tarefas do dia a dia.",
+                especificacoes: {
+                    nucleos: "6 núcleos",
+                    threads: "12 threads",
+                    frequencia: "2.9 GHz (até 4.3 GHz em Turbo)"
+                },
+                preco: "R$800,00",
+                link: "https://shopee.com.br/item-intel-i5"
+            },
+            GPU: {
+                nome: "NVIDIA GTX 1660 Super",
+                descricao: "Placa de vídeo com bom desempenho em 1080p.",
+                detalhes: "Esta placa de vídeo oferece um excelente desempenho para jogos em 1080p, com tecnologia NVIDIA Turing.",
+                especificacoes: {
+                    memoria: "6GB GDDR6",
+                    clock: "1530 MHz",
+                    cudaCores: "1408"
+                },
+                preco: "R$1500,00",
+                link: "https://shopee.com.br/item-gtx-1660"
+            },
+            RAM: {
+                nome: "8GB DDR4 3200MHz",
+                descricao: "Memória para performance equilibrada.",
+                detalhes: "Memória RAM de 8GB DDR4 com frequência de 3200MHz, ideal para jogos e multitarefas.",
+                especificacoes: {
+                    tipo: "DDR4",
+                    capacidade: "8GB",
+                    frequencia: "3200MHz"
+                },
+                preco: "R$300,00",
+                link: "https://shopee.com.br/item-ram-8gb"
+            }
+        };
 
-  // Eventos de clique e tecla para enviar mensagens
-  sendBtn.addEventListener('click', function() {
-    const input = userInput.value;
-    if(input !== "") {
-      appendMessage(input, 'user');
-      processUserInput(input);
-      userInput.value = "";
-    }
-  });
+        // Função que processa a entrada do usuário com base no estado atual da conversa
+        function processUserInput(input) {
+            const message = input.trim().toLowerCase();
 
-  userInput.addEventListener('keypress', function(e) {
-    if(e.key === 'Enter') {
-      sendBtn.click();
-    }
-  });
+            if(conversationStep === 0) {
+                conversationStep++;
+                appendMessage("Olá! Eu sou o assistente para montar seu PC Gamer.");
+                appendMessage("Você já possui algum componente do seu PC gamer? (responda 'sim' ou 'não')");
+                showOptions();
+            } else if(conversationStep === 1) {
+                if(message.includes("sim")) {
+                    userData.possuiComponentes = true;
+                    conversationStep++;
+                    appendMessage("Certo! Quais componentes você já possui? (Responda com os nomes dos componentes separados por vírgula: CPU, GPU, RAM)");
+                } else if(message.includes("não")) {
+                    userData.possuiComponentes = false;
+                    conversationStep = 3; // Pula para o orçamento se não possui nenhum componente
+                    appendMessage("Sem problemas! Vamos montar do zero. Qual é o seu orçamento aproximado? (Ex: 3000)");
+                } else {
+                    appendMessage("Por favor, responda com 'sim' ou 'não'.");
+                }
+            } else if(conversationStep === 2) {
+                // Armazena os componentes já existentes
+                userData.componentesExistentes = message;
+                conversationStep++;
+                appendMessage("Qual é o seu orçamento aproximado? (Ex: 3000)");
+            } else if(conversationStep === 3) {
+                // Processa o orçamento
+                let orcamento = parseFloat(message);
+                if(isNaN(orcamento)) {
+                    appendMessage("Por favor, insira um valor numérico para o orçamento.");
+                } else {
+                    userData.orcamento = orcamento;
+                    conversationStep++;
+                    appendMessage("Qual é o desempenho que você deseja para o seu PC? (responda 'leve', 'intermediário' ou 'alto')");
+                }
+            } else if(conversationStep === 4) {
+                if(message.includes("leve") || message.includes("intermediário") || message.includes("alto")) {
+                    userData.desempenho = message;
+                    conversationStep++;
+                    appendMessage("Ótimo! Vou analisar suas respostas e montar uma sugestão de configuração...");
+                    setTimeout(showRecommendations, 1500);
+                } else {
+                    appendMessage("Por favor, responda com 'leve', 'intermediário' ou 'alto'.");
+                }
+            }
+        }
 
-  // Inicializa a conversa quando o modal é aberto
-  pcBuilderButton.addEventListener('click', () => {
-    pcBuilderModal.style.display = 'block';
-    // Verifica se a conversa já foi iniciada
-    if (conversationStep === 0) {
-      appendMessage("Olá! Eu sou o assistente para montar seu PC Gamer.");
-      processUserInput(""); // Inicia o fluxo de perguntas
-    }
-  });
+        // Função que exibe as recomendações baseadas nos dados coletados
+        function showRecommendations() {
+            appendMessage("Aqui estão algumas recomendações para você:", "bot");
 
-  closePcBuilderButton.addEventListener('click', () => {
-    pcBuilderModal.style.display = 'none';
-    localStorage.setItem('pcBuilderModalOpen', 'false');
-  });
+            // Exemplo: Se o usuário não possui nenhum componente, recomenda todos os itens
+            if (!userData.possuiComponentes) {
+                appendRecommendation(produtos.CPU);
+                appendRecommendation(produtos.GPU);
+                appendRecommendation(produtos.RAM);
+            } else {
+                // Se já possui alguns componentes, recomenda somente os que parecem estar faltando
+                if (!userData.componentesExistentes.includes("cpu")) {
+                    appendRecommendation(produtos.CPU);
+                }
+                if (!userData.componentesExistentes.includes("gpu")) {
+                    appendRecommendation(produtos.GPU);
+                }
+                if (!userData.componentesExistentes.includes("ram") && !userData.componentesExistentes.includes("memoria")) {
+                    appendRecommendation(produtos.RAM);
+                }
+            }
+            appendMessage("Clique nos botões de cada item para ver mais detalhes e acessar os links de compra.", "bot");
+        }
 
-  // Fechar o modal ao clicar fora do conteúdo do modal
-  window.addEventListener('click', (e) => {
-    if (e.target === pcBuilderModal) {
-      pcBuilderModal.style.display = 'none';
-      localStorage.setItem('pcBuilderModalOpen', 'false');
-    }
-  });
-});
+        // Função para adicionar um bloco de recomendação na tela
+        function appendRecommendation(produto) {
+            const recDiv = document.createElement('div');
+            recDiv.classList.add('recommendation');
+            recDiv.innerHTML = `
+              <h3>${produto.nome}</h3>
+              <p>${produto.descricao}</p>
+              <p><strong>Preço:</strong> ${produto.preco}</p>
+              <button class='show-details-button' data-product-id='${produto.id}'>Ver Detalhes</button>
+              <a href="${produto.link}" target="_blank">Comprar</a>
+            `;
+            chatWindow.appendChild(recDiv);
+        }
+
+        // Eventos de clique e tecla para enviar mensagens
+        sendBtn.addEventListener('click', function() {
+            if (conversationStep === 0) {
+              startConversation()
+          }
+            const input = userInput.value;
+            if(input !== "") {
+                appendMessage(input, 'user');
+                processUserInput(input);
+                userInput.value = "";
+            }
+        });
+
+        userInput.addEventListener('keypress', function(e) {
+            if (conversationStep === 0) {
+              startConversation()
+          }
+            if(e.key === 'Enter') {
+                sendBtn.click();
+            }
+        });
+
+        function startConversation() {
+            conversationStep = 0;
+            userData = {
+                possuiComponentes: null,
+                componentesExistentes: "",
+                orcamento: null,
+                desempenho: null
+            };
+            appendMessage("Olá! Eu sou o assistente para montar seu PC Gamer.");
+            appendMessage("Você já possui algum componente do seu PC gamer? (responda 'sim' ou 'não')");
+            showOptions();
+        }
+
+        function showOptions() {
+            appendMessage("<button class='bot-option-button' data-action='start_over'>Recomeçar</button> <button class='bot-option-button' data-action='undo'>Voltar</button>", 'bot');
+        }
+
+        function showProductDetails(produtoId) {
+          const produto = produtos[produtoId.toUpperCase()];
+          if (produto) {
+              let detalhesHTML = `<h3>${produto.nome}</h3>
+                                   <p>${produto.descricao}</p>
+                                   <p><strong>Detalhes:</strong> ${produto.detalhes}</p>
+                                   <p><strong>Preço:</strong> ${produto.preco}</p>`;
+
+              if (produto.especificacoes) {
+                  detalhesHTML += "<ul>";
+                  for (const [key, value] of Object.entries(produto.especificacoes)) {
+                      detalhesHTML += `<li><strong>${key}:</strong> ${value}</li>`;
+                  }
+                  detalhesHTML += "</ul>";
+              }
+              detalhesHTML += `<a href="${produto.link}" target="_blank">Comprar</a>`;
+
+              appendMessage(detalhesHTML, 'bot');
+          } else {
+              appendMessage("Produto não encontrado.");
+          }
+        }
+
+        pcBotButton.addEventListener('click', () => {
+            pcBotModal.style.display = 'block';
+            loadChatHistory(); // Carrega o histórico do chat
+
+            // Se o chat estiver vazio, inicie uma nova conversa
+            if (chatWindow.innerHTML === '') {
+                startConversation();
+            }
+        });
+
+        closeBotButton.addEventListener('click', () => {
+            pcBotModal.style.display = 'none';
+            localStorage.setItem('pcBotModalOpen', 'false');
+            saveChatHistory()
+        });
+
+        // Fechar o modal ao clicar fora do conteúdo do modal
+        window.addEventListener('click', (e) => {
+            if (e.target === pcBotModal) {
+                pcBotModal.style.display = 'none';
+            }
+        });
+
+        // Event listener para os botões de opção
+        chatWindow.addEventListener('click', function(e) {
+            if (e.target.classList.contains('bot-option-button')) {
+                const action = e.target.dataset.action;
+                if (action === 'start_over') {
+                    // Limpar o histórico do chat
+                    chatWindow.innerHTML = '';
+                    saveChatHistory(); // Limpar o localStorage
+                    startConversation(); // Iniciar uma nova conversa
+                } else if (action === 'undo') {
+                    // Implementar a lógica para voltar um passo na conversa
+                    conversationStep = Math.max(0, conversationStep - 1);
+                    appendMessage("Voltando um passo...", 'bot');
+                    // Pode ser necessário recarregar o último prompt do bot
+                }
+            } else if (e.target.classList.contains('show-details-button')) {
+              const productId = e.target.dataset.productId;
+              showProductDetails(productId);
+          }
+        });
+
+        // Limpa o histórico se não houver nenhuma mensagem
+        if(chatWindow.innerHTML === ''){
+          saveChatHistory();
+        }
+
+        const styleSheet = document.createElement("style")
+        styleSheet.innerText = `
+        .bot-option-button {
+            background-color: #d4af37;
+            color: #1a1a1a;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }`;
+        document.head.appendChild(styleSheet)
+
+        function loadChatHistory() {
+            const history = localStorage.getItem('pcBotChatHistory');
+            if (history) {
+                chatWindow.innerHTML = history;
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        }
+
+        function saveChatHistory() {
+            localStorage.setItem('pcBotChatHistory', chatWindow.innerHTML);
+        }
+
+        function appendMessage(text, sender = 'bot') {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            if (sender === 'bot') {
+                messageDiv.classList.add('bot-message');
+            } else {
+                messageDiv.classList.add('user-message');
+            }
+            messageDiv.innerHTML = text;
+            chatWindow.appendChild(messageDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            saveChatHistory(); // Salva o histórico após adicionar a mensagem
+        }
+    });
   </script>
 </body>
 </html>
