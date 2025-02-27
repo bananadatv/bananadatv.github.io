@@ -536,27 +536,29 @@
       height: 300px;
       overflow-y: auto;
       margin-bottom: 10px;
-      background: #f4f4f4;
-      color: #000;
-      padding: 10px;
+      background: #333; /* Cor de fundo mais escura */
+      color: #fff; /* Texto branco para melhor contraste */
+      border: 1px solid #555; /* Borda sutil */
     }
     
     .pc-message {
-      margin-bottom: 10px;
-      padding: 5px;
-      border-radius: 5px;
+      padding: 8px 12px; /* Espaçamento interno para melhor legibilidade */
+      border-radius: 8px; /* Bordas mais arredondadas */
+      margin-bottom: 8px;
     }
     
     .pc-message.user {
-      background: #0084ff;
-      color: #e0e0e0;
+      background: #4CAF50; /* Verde para mensagens do usuário */
+      color: #fff; /* Texto branco */
       text-align: right;
     }
     
     .pc-message.bot {
-      background: #e0e0e0;
-      color: #000;
+      background: #ddd; /* Cinza claro para mensagens do bot */
+      color: #333; /* Texto escuro */
       text-align: left;
+      border: 1px solid #ccc; /* Adiciona uma borda sutil */
+      border-radius: 8px;
     }
     
     .recommendation {
@@ -1046,13 +1048,10 @@
         const sendBtn = document.getElementById('pc-send-btn');
 
         // Controle de fluxo da conversa e dados do usuário
-        let conversationStep = 0;
-        let userData = {
-            possuiComponentes: null,
-            componentesExistentes: "",
-            orcamento: null,
-            desempenho: null
-        };
+        let conversationStep = -1;
+        let userData = {};
+        let lastInteractionTime = Date.now();
+        const inactivityTimeout = 60000; // 60 segundos de inatividade
 
         // Produtos fictícios para demonstração
         const produtos = {
@@ -1070,6 +1069,7 @@
                 link: "https://shopee.com.br/item-intel-i5"
             },
             GPU: {
+                id: "gpu",
                 nome: "NVIDIA GTX 1660 Super",
                 descricao: "Placa de vídeo com bom desempenho em 1080p.",
                 detalhes: "Esta placa de vídeo oferece um excelente desempenho para jogos em 1080p, com tecnologia NVIDIA Turing.",
@@ -1082,6 +1082,7 @@
                 link: "https://shopee.com.br/item-gtx-1660"
             },
             RAM: {
+                id: "ram",
                 nome: "8GB DDR4 3200MHz",
                 descricao: "Memória para performance equilibrada.",
                 detalhes: "Memória RAM de 8GB DDR4 com frequência de 3200MHz, ideal para jogos e multitarefas.",
@@ -1098,13 +1099,13 @@
         // Função que processa a entrada do usuário com base no estado atual da conversa
         function processUserInput(input) {
             const message = input.trim().toLowerCase();
+            resetInactivityTimer();
 
-            if(conversationStep === 0) {
+            if(conversationStep === -1) {
                 conversationStep++;
-                appendMessage("Olá! Eu sou o assistente para montar seu PC Gamer.");
                 appendMessage("Você já possui algum componente do seu PC gamer? (responda 'sim' ou 'não')");
-                showOptions();
-            } else if(conversationStep === 1) {
+                appendOptions();
+            } else if(conversationStep === 0) {
                 if(message.includes("sim")) {
                     userData.possuiComponentes = true;
                     conversationStep++;
@@ -1116,19 +1117,19 @@
                 } else {
                     appendMessage("Por favor, responda com 'sim' ou 'não'.");
                 }
-            } else if(conversationStep === 2) {
+            } else if(conversationStep === 1) {
                 // Armazena os componentes já existentes
                 userData.componentesExistentes = message;
                 conversationStep++;
                 appendMessage("Qual é o seu orçamento aproximado? (Ex: 3000)");
-            } else if(conversationStep === 3) {
+            } else if(conversationStep === 2) {
                 // Processa o orçamento
                 let orcamento = parseFloat(message);
                 if(isNaN(orcamento)) {
                     appendMessage("Por favor, insira um valor numérico para o orçamento.");
                 } else {
                     userData.orcamento = orcamento;
-                    conversationStep++;
+                    conversationStep = 4;
                     appendMessage("Qual é o desempenho que você deseja para o seu PC? (responda 'leve', 'intermediário' ou 'alto')");
                 }
             } else if(conversationStep === 4) {
@@ -1137,6 +1138,7 @@
                     conversationStep++;
                     appendMessage("Ótimo! Vou analisar suas respostas e montar uma sugestão de configuração...");
                     setTimeout(showRecommendations, 1500);
+                    appendOptions();
                 } else {
                     appendMessage("Por favor, responda com 'leve', 'intermediário' ou 'alto'.");
                 }
@@ -1146,7 +1148,7 @@
         // Função que exibe as recomendações baseadas nos dados coletados
         function showRecommendations() {
             appendMessage("Aqui estão algumas recomendações para você:", "bot");
-
+            
             // Exemplo: Se o usuário não possui nenhum componente, recomenda todos os itens
             if (!userData.possuiComponentes) {
                 appendRecommendation(produtos.CPU);
@@ -1170,6 +1172,7 @@
         // Função para adicionar um bloco de recomendação na tela
         function appendRecommendation(produto) {
             const recDiv = document.createElement('div');
+            const productId = produto.id;
             recDiv.classList.add('recommendation');
             recDiv.innerHTML = `
               <h3>${produto.nome}</h3>
@@ -1183,86 +1186,52 @@
 
         // Eventos de clique e tecla para enviar mensagens
         sendBtn.addEventListener('click', function() {
-            if (conversationStep === 0) {
-              startConversation()
-          }
             const input = userInput.value;
             if(input !== "") {
-                appendMessage(input, 'user');
-                processUserInput(input);
-                userInput.value = "";
+              appendMessage(input, 'user');
+              processUserInput(input);
+              userInput.value = "";
+              resetInactivityTimer();
             }
         });
 
         userInput.addEventListener('keypress', function(e) {
-            if (conversationStep === 0) {
-              startConversation()
-          }
             if(e.key === 'Enter') {
-                sendBtn.click();
+              sendBtn.click();
+              resetInactivityTimer();
             }
         });
 
         function startConversation() {
-            conversationStep = 0;
-            userData = {
-                possuiComponentes: null,
-                componentesExistentes: "",
-                orcamento: null,
-                desempenho: null
-            };
-            appendMessage("Olá! Eu sou o assistente para montar seu PC Gamer.");
+            chatWindow.innerHTML = '';
+            conversationStep = -1;
+            userData = {};
             appendMessage("Você já possui algum componente do seu PC gamer? (responda 'sim' ou 'não')");
-            showOptions();
+            appendOptions();
         }
 
-        function showOptions() {
-            appendMessage("<button class='bot-option-button' data-action='start_over'>Recomeçar</button> <button class='bot-option-button' data-action='undo'>Voltar</button>", 'bot');
-        }
-
-        function showProductDetails(produtoId) {
-          const produto = produtos[produtoId.toUpperCase()];
-          if (produto) {
-              let detalhesHTML = `<h3>${produto.nome}</h3>
-                                   <p>${produto.descricao}</p>
-                                   <p><strong>Detalhes:</strong> ${produto.detalhes}</p>
-                                   <p><strong>Preço:</strong> ${produto.preco}</p>`;
-
-              if (produto.especificacoes) {
-                  detalhesHTML += "<ul>";
-                  for (const [key, value] of Object.entries(produto.especificacoes)) {
-                      detalhesHTML += `<li><strong>${key}:</strong> ${value}</li>`;
-                  }
-                  detalhesHTML += "</ul>";
-              }
-              detalhesHTML += `<a href="${produto.link}" target="_blank">Comprar</a>`;
-
-              appendMessage(detalhesHTML, 'bot');
-          } else {
-              appendMessage("Produto não encontrado.");
-          }
+        function appendOptions() {
+          chatWindow.insertAdjacentHTML('beforeend', "<button class='bot-option-button' data-action='start_over'>Recomeçar</button> <button class='bot-option-button' data-action='undo'>Voltar</button>");
         }
 
         pcBotButton.addEventListener('click', () => {
             pcBotModal.style.display = 'block';
-            loadChatHistory(); // Carrega o histórico do chat
-
-            // Se o chat estiver vazio, inicie uma nova conversa
-            if (chatWindow.innerHTML === '') {
-                startConversation();
-            }
+            loadChatHistory();
+            startConversation();
         });
 
         closeBotButton.addEventListener('click', () => {
             pcBotModal.style.display = 'none';
-            localStorage.setItem('pcBotModalOpen', 'false');
-            saveChatHistory()
+            saveChatHistory();
         });
 
         // Fechar o modal ao clicar fora do conteúdo do modal
         window.addEventListener('click', (e) => {
             if (e.target === pcBotModal) {
                 pcBotModal.style.display = 'none';
+                if (pcBotModal.style.display === 'none') {
+                  resetInactivityTimer();
+                }
             }
         });
 
@@ -1271,39 +1240,20 @@
             if (e.target.classList.contains('bot-option-button')) {
                 const action = e.target.dataset.action;
                 if (action === 'start_over') {
-                    // Limpar o histórico do chat
                     chatWindow.innerHTML = '';
-                    saveChatHistory(); // Limpar o localStorage
-                    startConversation(); // Iniciar uma nova conversa
+                    localStorage.removeItem('pcBotChatHistory');
+                    saveChatHistory();
+                    startConversation();
+                    resetInactivityTimer();
                 } else if (action === 'undo') {
-                    // Implementar a lógica para voltar um passo na conversa
                     conversationStep = Math.max(0, conversationStep - 1);
                     appendMessage("Voltando um passo...", 'bot');
-                    // Pode ser necessário recarregar o último prompt do bot
                 }
             } else if (e.target.classList.contains('show-details-button')) {
               const productId = e.target.dataset.productId;
               showProductDetails(productId);
           }
         });
-
-        // Limpa o histórico se não houver nenhuma mensagem
-        if(chatWindow.innerHTML === ''){
-          saveChatHistory();
-        }
-
-        const styleSheet = document.createElement("style")
-        styleSheet.innerText = `
-        .bot-option-button {
-            background-color: #d4af37;
-            color: #1a1a1a;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-        }`;
-        document.head.appendChild(styleSheet)
 
         function loadChatHistory() {
             const history = localStorage.getItem('pcBotChatHistory');
@@ -1317,8 +1267,20 @@
             localStorage.setItem('pcBotChatHistory', chatWindow.innerHTML);
         }
 
+        function checkInactivity() {
+        const currentTime = Date.now();
+        if (lastInteractionTime && (currentTime - lastInteractionTime > inactivityTimeout)) {
+            appendMessage("Detectamos inatividade. Reiniciando a conversa...", "bot");
+            startConversation();
+        }
+        }
+
+        function resetInactivityTimer() {
+        lastInteractionTime = Date.now();
+        }
+
         function appendMessage(text, sender = 'bot') {
-            const messageDiv = document.createElement('div');
+            const messageDiv = document.createElement('div');  
             messageDiv.classList.add('message');
             if (sender === 'bot') {
                 messageDiv.classList.add('bot-message');
@@ -1328,8 +1290,13 @@
             messageDiv.innerHTML = text;
             chatWindow.appendChild(messageDiv);
             chatWindow.scrollTop = chatWindow.scrollHeight;
-            saveChatHistory(); // Salva o histórico após adicionar a mensagem
+            saveChatHistory();
         }
+
+        //Inicia o timer de inatividade
+        resetInactivityTimer();
+
+        setInterval(checkInactivity, 10000);
     });
   </script>
 </body>
