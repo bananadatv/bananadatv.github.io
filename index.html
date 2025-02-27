@@ -302,8 +302,183 @@ footer .social-links a:hover {
   padding: 20px;
 }
 
-/* Responsive Styles for Video Carousel and Modal */
+/* Styles for Products Section Toggle */
+.toggle-products {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products-content {
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  overflow: hidden;
+}
+
+.products-content.hidden {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 20px;
+}
+
+.products-content.visible {
+  max-height: 2000px; /* Arbitrary large value to accommodate content */
+  opacity: 1;
+  padding: 20px;
+}
+
+/* Seção de Produtos em Destaque */
+.product-showcase-section {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #2c1a0d;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.product-showcase-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d4af37;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-item {
+  background: #1a1a1a;
+  padding: 15px;
+  border: 2px solid #d4af37;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.product-item:hover {
+  transform: scale(1.05);
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-item h3 {
+  margin: 15px 0;
+  color: #e0e0e0;
+  font-size: 1.2em;
+}
+
+.affiliate-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d4af37;
+  color: #1a1a1a;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.affiliate-link:hover {
+  background-color: #b8860b;
+}
+
+.product-description {
+  margin: 10px 0;
+  color: #b8860b;
+  font-size: 0.95em;
+  height: 3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Estilos para a seção de filtro de produtos */
+.product-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+  gap: 20px;
+}
+
+#product-search {
+  display: none;
+}
+
+.category-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.category-button {
+  padding: 8px 12px;
+  border: 2px solid #d4af37;
+  border-radius: 5px;
+  background-color: #2c1a0d;
+  color: #d4af37;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.category-button:hover,
+.category-button.active {
+  background-color: #d4af37;
+  color: #1a1a1a;
+}
+
+/* Remover estilos relacionados aos filtros adicionais */
+.additional-filters {
+  display: none;
+}
+
+.filter-select {
+  display: none;
+}
+
+.price-filter {
+  display: none;
+}
+
+/* Remover estilos para o botão de resetar filtros */
+.reset-button {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+}
+
 @media (max-width: 768px) {
+  .product-filter {
+    flex-direction: column;
+    align-items: center;
+  }
   .modal-content {
     width: 90%;
   }
@@ -339,12 +514,228 @@ footer .social-links a:hover {
   .video-content iframe {
     height: 200px;
   }
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  .product-item h3 {
+    font-size: 1.1em;
+  }
+
+  .product-description {
+    font-size: 0.9em;
+    height: auto;
+  }
 }
 
 @media (orientation: landscape) {
   .video-content iframe {
     height: 400px;
   }
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Estilos para a grid de produtos filtrados */
+.product-item {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.product-item:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Ocultar produtos de maneira suave */
+.product-item {
+  opacity: 1;
+}
+
+.product-item[style*="display: none"] {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Estilos para o botão fixo de montar PC Gamer */
+.fixed-pc-builder-button {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
+
+.fixed-pc-builder-button button {
+  background-color: #d4af37;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+.fixed-pc-builder-button button:hover {
+  background-color: #b8860b;
+}
+
+/* Estilos para o modal de montar PC Gamer */
+#pc-builder-modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1002; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.7); 
+}
+
+#pc-builder-modal .modal-content {
+  background-color: #2c1a0d;
+  margin: 10% auto; 
+  padding: 20px;
+  border: 2px solid #d4af37;
+  width: 80%; 
+  max-width: 600px;
+  border-radius: 10px;
+  color: #e0e0e0;
+  position: relative;
+  animation: fadeIn 0.5s;
+}
+
+/* Botão de fechar para o modal de montar PC Gamer */
+.close-pc-builder-button {
+  color: #d4af37;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-pc-builder-button:hover,
+.close-pc-builder-button:focus {
+  color: #b8860b;
+}
+
+/* Animação para o modal */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bot Container Styles */
+.bot-container {
+  display: flex;
+  flex-direction: column;
+  height: 500px; /* Adjust as needed */
+}
+
+#chat-window {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #2c1a0d;
+  color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.message {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bot-message {
+  background: #e0e0e0;
+  color: #000;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  align-self: flex-start;
+}
+
+.user-message {
+  background: #0084ff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  align-self: flex-end;
+}
+
+#input-area {
+  display: flex;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px 0 0 5px;
+}
+
+#send-btn {
+  padding: 10px 20px;
+  background: #0084ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 0 5px 5px 0;
+  transition: background-color 0.3s;
+}
+
+#send-btn:hover {
+  background: #006bbd;
+}
+
+.recommendation {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background: #f9f9f9;
+}
+
+.recommendation a {
+  display: inline-block;
+  margin-top: 5px;
+  background: #28a745;
+  color: #fff;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+.recommendation a:hover {
+  background: #218838;
+}
+
+/* Scrollbar Styling for Chat Window */
+#chat-window::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chat-window::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+#chat-window::-webkit-scrollbar-thumb {
+  background-color: #d4af37;
+  border-radius: 4px;
 }
   </style>
   
@@ -494,7 +885,7 @@ footer .social-links a:hover {
           <div class="skill-type">
             <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
               <polygon points="32,4 12,60 52,60" stroke="#d4af37" stroke-width="4" fill="none"/>
-              <path d="M32 32 L42 60 L22 60 Z" fill="#d4af37"/>
+              <path d="M32 32 L48 60 L28 60 Z" fill="#d4af37"/>
             </svg>
             <div class="skill-type-content">
               <strong>Clan/Hero/Mentoring Skills (Habilidades de Clã/Herói/Mentoria):</strong>
@@ -539,6 +930,259 @@ footer .social-links a:hover {
     </div>
   </section>
   <!-- Fim da Seção dos Tipos de Habilidades -->
+
+  <section class="product-showcase-section">
+    <h2 class="toggle-products">Produtos em Destaque <span class="toggle-icon">▼</span></h2>
+    <div class="products-content hidden">
+      <!-- Seção de Filtro de Produtos -->
+      <div class="product-filter">
+        <div class="category-menu">
+          <button class="category-button" data-category="1">1️⃣ Créditos e Itens para Lineage 2</button>
+          <button class="category-button" data-category="2">2️⃣ Acessórios Gamer 🎮</button>
+          <button class="category-button" data-category="3">3️⃣ Hardware para PC Gamer 🖥️</button>
+          <button class="category-button" data-category="4">4️⃣ Assinaturas e Softwares 💻</button>
+          <button class="category-button" data-category="5">5️⃣ Produtos Geek e Colecionáveis 🏆</button>
+        </div>
+      </div>
+      <!-- Grid de Produtos -->
+      <div class="product-grid">
+        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="50" data-color="Preto">
+          <img src="/2025-02-26 (1).png" alt="Pacotes de Adena" class="product-image">
+          <h3>Pacote de Adena</h3>
+          <p class="product-description">Pacote de Adena in-game para Lineage II, permitindo que você compre itens exclusivos e melhore sua experiência de jogo.</p>
+          <a href="https://afiliado-exemplo.com/produto1" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="60" data-color="Branco">
+          <img src="/2025-02-26 (1).png" alt="Cartões pré-pagos NCSoft" class="product-image">
+          <h3>Cartões pré-pagos NCSoft</h3>
+          <p class="product-description">Cartões pré-pagos NCSoft para compras dentro de Lineage II, seguros e fáceis de usar.</p>
+          <a href="https://afiliado-exemplo.com/produto2" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="100" data-color="Azul">
+          <img src="/2025-02-26 (1).png" alt="Packs de VIP/Premium" class="product-image">
+          <h3>Packs de VIP/Premium para Lineage 2</h3>
+          <p class="product-description">Packs VIP/Premium para Lineage II que oferecem benefícios exclusivos e vantagens no jogo.</p>
+          <a href="https://afiliado-exemplo.com/produto3" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="80" data-color="Roxo">
+          <img src="/2025-02-26 (1).png" alt="Baús com skins e itens raros" class="product-image">
+          <h3>Baús com skins e itens raros</h3>
+          <p class="product-description">Baús contendo skins exclusivas e itens raros para personalizar sua experiência em Lineage II.</p>
+          <a href="https://afiliado-exemplo.com/produto4" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="150" data-color="Verde">
+          <img src="/2025-02-26 (1).png" alt="Serviço de Power Leveling" class="product-image">
+          <h3>Serviço de Power Leveling</h3>
+          <p class="product-description">Serviço de Power Leveling para subir de nível mais rápido em Lineage II, garantindo uma progressão eficiente.</p>
+          <a href="https://afiliado-exemplo.com/produto5" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="1" data-brand="NCSoft" data-price="200" data-color="Vermelho">
+          <img src="/2025-02-26 (1).png" alt="Bots e macros automatizados" class="product-image">
+          <h3>Bots e macros automatizados</h3>
+          <p class="product-description">Bots e macros automatizados para farmar em Lineage II de forma eficiente e segura.</p>
+          <a href="https://afiliado-exemplo.com/produto6" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="2" data-brand="Logitech" data-price="120" data-color="Preto">
+          <img src="/path-to-image.png" alt="Teclado Mecânico RGB" class="product-image">
+          <h3>Teclado Mecânico RGB</h3>
+          <p class="product-description">Teclado gamer mecânico com iluminação RGB, ideal para longas sessões de jogo.</p>
+          <a href="https://afiliado-exemplo.com/produto7" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="2" data-brand="Razer" data-price="80" data-color="Vermelho">
+          <img src="/path-to-image.png" alt="Mouse Gamer Programável" class="product-image">
+          <h3>Mouse Gamer com Botões Programáveis</h3>
+          <p class="product-description">Mouse gamer com múltiplos botões programáveis para personalizar seus comandos no jogo.</p>
+          <a href="https://afiliado-exemplo.com/produto8" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="2" data-brand="HyperX" data-price="150" data-color="Azul">
+          <img src="/path-to-image.png" alt="Headset com som 7.1 e microfone" class="product-image">
+          <h3>Headset Gamer 7.1</h3>
+          <p class="product-description">Headset com som envolvente 7.1 e microfone de alta qualidade para comunicação clara.</p>
+          <a href="https://afiliado-exemplo.com/produto9" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="2" data-brand="SteelSeries" data-price="40" data-color="Preto">
+          <img src="/path-to-image.png" alt="Mousepad Gamer Grande" class="product-image">
+          <h3>Mousepad Gamer Grande</h3>
+          <p class="product-description">Mousepad gamer grande com superfície antiderrapante e design personalizado.</p>
+          <a href="https://afiliado-exemplo.com/produto10" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="2" data-brand="Redragon" data-price="60" data-color="Preto">
+          <img src="/path-to-image.png" alt="Controle USB Gamer" class="product-image">
+          <h3>Controle USB Gamer</h3>
+          <p class="product-description">Controle USB para gamers que preferem jogar sem teclado e mouse.</p>
+          <a href="https://afiliado-exemplo.com/produto11" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="2" data-brand="UGREEN" data-price="35" data-color="Branco">
+          <img src="/path-to-image.png" alt="Suporte para Celular/Tablet" class="product-image">
+          <h3>Suporte para Celular/Tablet</h3>
+          <p class="product-description">Suporte ajustável para celular ou tablet, ideal para jogos mobile como Lineage 2 Revolution.</p>
+          <a href="https://afiliado-exemplo.com/produto12" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="3" data-brand="NVIDIA" data-price="500" data-color="Preto">
+          <img src="/path-to-image.png" alt="Placa de Vídeo RTX 3060" class="product-image">
+          <h3>Placa de Vídeo RTX 3060</h3>
+          <p class="product-description">Placa de vídeo NVIDIA GeForce RTX 3060, oferecendo excelente desempenho para jogos.</p>
+          <a href="https://afiliado-exemplo.com/produto13" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="3" data-brand="Corsair" data-price="200" data-color="Preto">
+          <img src="/path-to-image.png" alt="Memória RAM 16GB" class="product-image">
+          <h3>Memória RAM 16GB</h3>
+          <p class="product-description">Memória RAM Corsair Vengeance de 16GB para maior desempenho em jogos e multitarefa.</p>
+          <a href="https://afiliado-exemplo.com/produto14" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="3" data-brand="Corsair" data-price="350" data-color="Preto">
+          <img src="/path-to-image.png" alt="Memória RAM 32GB" class="product-image">
+          <h3>Memória RAM 32GB</h3>
+          <p class="product-description">Memória RAM Corsair Vengeance de 32GB para desempenho excepcional em multitarefa e jogos.</p>
+          <a href="https://afiliado-exemplo.com/produto15" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="3" data-brand="Samsung" data-price="150" data-color="Prata">
+          <img src="/path-to-image.png" alt="SSD NVMe" class="product-image">
+          <h3>SSD NVMe 1TB</h3>
+          <p class="product-description">SSD NVMe Samsung 1TB para carregamentos ultra-rápidos e armazenamento confiável.</p>
+          <a href="https://afiliado-exemplo.com/produto16" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="3" data-brand="Intel" data-price="300" data-color="Branco">
+          <img src="/path-to-image.png" alt="Processador Intel i7" class="product-image">
+          <h3>Processador Intel i7</h3>
+          <p class="product-description">Processador Intel Core i7 para desempenho poderoso em jogos e aplicações.</p>
+          <a href="https://afiliado-exemplo.com/produto17" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="3" data-brand="ASUS" data-price="400" data-color="Preto">
+          <img src="/path-to-image.png" alt="Monitor Gamer 144Hz" class="product-image">
+          <h3>Monitor Gamer 144Hz</h3>
+          <p class="product-description">Monitor ASUS de 144Hz para uma experiência de jogo suave e sem atrasos.</p>
+          <a href="https://afiliado-exemplo.com/produto18" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="4" data-brand="Microsoft" data-price="15" data-color="Azul">
+          <img src="/path-to-image.png" alt="Xbox Game Pass" class="product-image">
+          <h3>Xbox Game Pass</h3>
+          <p class="product-description">Assinatura Xbox Game Pass para acesso a uma vasta biblioteca de jogos.</p>
+          <a href="https://afiliado-exemplo.com/produto19" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="4" data-brand="NordVPN" data-price="50" data-color="Preto">
+          <img src="/path-to-image.png" alt="VPN Gamer" class="product-image">
+          <h3>VPN Gamer</h3>
+          <p class="product-description">VPN para reduzir ping e latência nos servidores de jogos online.</p>
+          <a href="https://afiliado-exemplo.com/produto20" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="4" data-brand="OBSProject" data-price="0" data-color="Branco">
+          <img src="/path-to-image.png" alt="OBS Studio" class="product-image">
+          <h3>OBS Studio</h3>
+          <p class="product-description">Software de gravação e streaming gratuito para gamers e streamers.</p>
+          <a href="https://afiliado-exemplo.com/produto21" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="4" data-brand="Discord" data-price="10" data-color="Roxo">
+          <img src="/path-to-image.png" alt="Discord Nitro" class="product-image">
+          <h3>Discord Nitro</h3>
+          <p class="product-description">Assinatura Discord Nitro para melhor qualidade de áudio nos chats de guilda.</p>
+          <a href="https://afiliado-exemplo.com/produto22" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="4" data-brand="FastVPN" data-price="80" data-color="Preto">
+          <img src="/path-to-image.png" alt="Serviço de IP Dedicado" class="product-image">
+          <h3>Serviço de IP Dedicado</h3>
+          <p class="product-description">Serviço de IP dedicado para evitar lag em jogos online e melhorar a estabilidade da conexão.</p>
+          <a href="https://afiliado-exemplo.com/produto23" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="4" data-brand="Kaspersky" data-price="60" data-color="Preto">
+          <img src="/path-to-image.png" alt="Antivírus Gamer" class="product-image">
+          <h3>Antivírus Gamer</h3>
+          <p class="product-description">Antivírus dedicado para proteger sua conta de hacks e keyloggers em jogos online.</p>
+          <a href="https://afiliado-exemplo.com/produto24" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="5" data-brand="Official" data-price="30" data-color="Preto">
+          <img src="/path-to-image.png" alt="Camisa Lineage 2" class="product-image">
+          <h3>Camisa Lineage 2</h3>
+          <p class="product-description">Camisa oficial com estampas de Lineage 2 para mostrar seu amor pelo jogo.</p>
+          <a href="https://afiliado-exemplo.com/produto25" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="5" data-brand="Official" data-price="50" data-color="Cinza">
+          <img src="/path-to-image.png" alt="Hoodie Lineage 2" class="product-image">
+          <h3>Hoodie Lineage 2</h3>
+          <p class="product-description">Hoodie com estampas de Lineage 2, confortável e estiloso para os fãs.</p>
+          <a href="https://afiliado-exemplo.com/produto26" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="5" data-brand="Funko" data-price="25" data-color="Preto">
+          <img src="/path-to-image.png" alt="Action Figures de personagens" class="product-image">
+          <h3>Action Figures de Personagens</h3>
+          <p class="product-description">Action figures de personagens icônicos de Lineage 2, perfeitos para colecionadores.</p>
+          <a href="https://afiliado-exemplo.com/produto27" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="5" data-brand="CustomArt" data-price="15" data-color="Colorido">
+          <img src="/path-to-image.png" alt="Mousepad Personalizado" class="product-image">
+          <h3>Mousepad Personalizado</h3>
+          <p class="product-description">Mousepad personalizado com artes do jogo Lineage 2, ideal para gamers.</p>
+          <a href="https://afiliado-exemplo.com/produto28" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="5" data-brand="ArtPrints" data-price="20" data-color="Vermelho">
+          <img src="/path-to-image.png" alt="Poster Lineage 2" class="product-image">
+          <h3>Poster Lineage 2</h3>
+          <p class="product-description">Poster de Lineage 2 para decorar seu espaço com qualidade e estilo.</p>
+          <a href="https://afiliado-exemplo.com/produto29" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+
+        <div class="product-item" data-category="5" data-brand="GamingGear" data-price="10" data-color="Preto">
+          <img src="/path-to-image.png" alt="Caneca Temática de Games" class="product-image">
+          <h3>Caneca Temática de Games</h3>
+          <p class="product-description">Caneca temática de Lineage 2, perfeita para seu café durante as sessões de jogo.</p>
+          <a href="https://afiliado-exemplo.com/produto30" class="affiliate-link" target="_blank">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="fixed-pc-builder-button">
+    <button id="pc-builder-toggle-button">
+      <!-- Inline SVG para o ícone do botão -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4af37" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 3H21V21H3V3Z" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 12H16" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 8V16" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Montar um PC Gamer
+    </button>
+  </div>
+
+  <div id="pc-builder-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-pc-builder-button">&times;</span>
+      <div class="bot-container">
+        <div id="chat-window"></div>
+        <div id="input-area">
+          <input type="text" id="user-input" placeholder="Digite sua mensagem..." autocomplete="off" />
+          <button id="send-btn">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="social-links">
@@ -614,6 +1258,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Toggle Products Section
+  const toggleProductsHeader = document.querySelector('.toggle-products');
+  const productsContent = document.querySelector('.products-content');
+  const toggleProductsIcon = toggleProductsHeader.querySelector('.toggle-icon');
+
+  // Initialize the products section as hidden
+  productsContent.classList.add('hidden');
+  toggleProductsIcon.textContent = '▼';
+
+  toggleProductsHeader.addEventListener('click', () => {
+    if (productsContent.classList.contains('visible')) {
+      productsContent.classList.remove('visible');
+      productsContent.classList.add('hidden');
+      toggleProductsIcon.textContent = '▼';
+    } else {
+      productsContent.classList.remove('hidden');
+      productsContent.classList.add('visible');
+      toggleProductsIcon.textContent = '▲';
+    }
+  });
+
   // Função para escapar caracteres HTML
   function escapeHtml(text) {
     const map = {
@@ -638,6 +1303,269 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('skill-modal');
     if (e.target === modal) {
       modal.style.display = 'none';
+    }
+  });
+
+  // Seleciona os elementos do filtro
+  const categoryButtons = document.querySelectorAll('.category-button');
+  const productItems = document.querySelectorAll('.product-item');
+
+  let activeCategory = null;
+
+  // Função para filtrar os produtos
+  function filterProducts() {
+    productItems.forEach(item => {
+      const itemCategory = item.getAttribute('data-category');
+
+      // Verifica a categoria
+      const matchesCategory = activeCategory ? itemCategory === activeCategory : true;
+
+      if (matchesCategory) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  // Eventos para os botões de categoria
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove a classe active de todos os botões
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Verifica se a categoria clicada já está ativa
+      if (activeCategory === button.getAttribute('data-category')) {
+        activeCategory = null;
+      } else {
+        activeCategory = button.getAttribute('data-category');
+        button.classList.add('active');
+      }
+      
+      filterProducts();
+    });
+  });
+
+  // Função para restaurar a exibição de todos os produtos
+  function resetFilters() {
+    activeCategory = null;
+    categoryButtons.forEach(btn => btn.classList.remove('active'));
+    filterProducts();
+  }
+
+  // Seleciona os elementos do botão e modal de montar PC Gamer
+  const pcBuilderButton = document.getElementById('pc-builder-toggle-button');
+  const pcBuilderModal = document.getElementById('pc-builder-modal');
+  const closePcBuilderButton = document.querySelector('.close-pc-builder-button');
+
+  // Função para abrir o modal
+  function openPcBuilderModal() {
+    pcBuilderModal.style.display = 'block';
+    localStorage.setItem('pcBuilderModalOpen', 'true');
+  }
+
+  // Função para fechar o modal
+  function closePcBuilderModal() {
+    pcBuilderModal.style.display = 'none';
+    localStorage.setItem('pcBuilderModalOpen', 'false');
+  }
+
+  // Evento de clique no botão para abrir o modal
+  pcBuilderButton.addEventListener('click', () => {
+    pcBuilderModal.style.display = 'block';
+    localStorage.setItem('pcBuilderModalOpen', 'true');
+  });
+
+  // Evento de clique no botão de fechar do modal
+  closePcBuilderButton.addEventListener('click', () => {
+    closePcBuilderModal();
+  });
+
+  // Fechar o modal ao clicar fora do conteúdo do modal
+  window.addEventListener('click', (e) => {
+    if (e.target === pcBuilderModal) {
+      closePcBuilderModal();
+    }
+  });
+
+  // Verificar o estado do modal no carregamento da página
+  const isPcBuilderModalOpen = localStorage.getItem('pcBuilderModalOpen');
+  if (isPcBuilderModalOpen === 'true') {
+    pcBuilderModal.style.display = 'block';
+  } else {
+    pcBuilderModal.style.display = 'none';
+  }
+
+  // Bot Functionality
+  // Bot Elements
+  const chatWindow = document.getElementById('chat-window');
+  const userInput = document.getElementById('user-input');
+  const sendBtn = document.getElementById('send-btn');
+
+  // Controle de fluxo da conversa e dados do usuário
+  let conversationStep = 0;
+  let userData = {
+    possuiComponentes: null,
+    componentesExistentes: "",
+    orcamento: null,
+    desempenho: null
+  };
+
+  // Produtos fictícios para demonstração
+  const produtos = {
+    CPU: {
+      nome: "Intel Core i5-10400F",
+      descricao: "Processador intermediário ideal para jogos.",
+      preco: "R$800,00",
+      link: "https://shopee.com.br/item-intel-i5"
+    },
+    GPU: {
+      nome: "NVIDIA GTX 1660 Super",
+      descricao: "Placa de vídeo com bom desempenho em 1080p.",
+      preco: "R$1500,00",
+      link: "https://shopee.com.br/item-gtx-1660"
+    },
+    RAM: {
+      nome: "8GB DDR4 3200MHz",
+      descricao: "Memória para performance equilibrada.",
+      preco: "R$300,00",
+      link: "https://shopee.com.br/item-ram-8gb"
+    }
+  };
+
+  // Função para adicionar mensagem na janela de chat
+  function appendMessage(text, sender = 'bot') {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    if(sender === 'bot') {
+      messageDiv.classList.add('bot-message');
+    } else {
+      messageDiv.classList.add('user-message');
+    }
+    messageDiv.innerHTML = text;
+    chatWindow.appendChild(messageDiv);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
+  // Função que processa a entrada do usuário com base no estado atual da conversa
+  function processUserInput(input) {
+    const message = input.trim().toLowerCase();
+    
+    if(conversationStep === 0) {
+      conversationStep++;
+      appendMessage("Você já possui algum componente do seu PC gamer? (responda 'sim' ou 'não')");
+    } else if(conversationStep === 1) {
+      if(message.includes("sim")) {
+        userData.possuiComponentes = true;
+        conversationStep++;
+        appendMessage("Certo! Quais componentes você já possui? (Ex: CPU, GPU, RAM)");
+      } else if(message.includes("não")) {
+        userData.possuiComponentes = false;
+        conversationStep = 3; // Pula para o orçamento se não possui nenhum componente
+        appendMessage("Sem problemas! Vamos montar do zero. Qual é o seu orçamento aproximado? (Ex: 3000)");
+      } else {
+        appendMessage("Por favor, responda com 'sim' ou 'não'.");
+      }
+    } else if(conversationStep === 2) {
+      // Armazena os componentes já existentes
+      userData.componentesExistentes = message;
+      conversationStep++;
+      appendMessage("Qual é o seu orçamento aproximado? (Ex: 3000)");
+    } else if(conversationStep === 3) {
+      // Processa o orçamento
+      let orcamento = parseFloat(message);
+      if(isNaN(orcamento)) {
+        appendMessage("Por favor, insira um valor numérico para o orçamento.");
+      } else {
+        userData.orcamento = orcamento;
+        conversationStep++;
+        appendMessage("Qual é o desempenho que você deseja para o seu PC? (responda 'leve', 'intermediário' ou 'alto')");
+      }
+    } else if(conversationStep === 4) {
+      if(message.includes("leve") || message.includes("intermediário") || message.includes("alto")) {
+        userData.desempenho = message;
+        conversationStep++;
+        appendMessage("Ótimo! Vou analisar suas respostas e montar uma sugestão de configuração...");
+        setTimeout(showRecommendations, 1500);
+      } else {
+        appendMessage("Por favor, responda com 'leve', 'intermediário' ou 'alto'.");
+      }
+    }
+  }
+
+  // Função que exibe as recomendações baseadas nos dados coletados
+  function showRecommendations() {
+    appendMessage("Aqui estão algumas recomendações para você:", "bot");
+
+    // Exemplo: Se o usuário não possui nenhum componente, recomenda todos os itens
+    if (!userData.possuiComponentes) {
+      appendRecommendation(produtos.CPU);
+      appendRecommendation(produtos.GPU);
+      appendRecommendation(produtos.RAM);
+    } else {
+      // Se já possui alguns componentes, recomenda somente os que parecem estar faltando
+      if (!userData.componentesExistentes.includes("cpu")) {
+        appendRecommendation(produtos.CPU);
+      }
+      if (!userData.componentesExistentes.includes("gpu")) {
+        appendRecommendation(produtos.GPU);
+      }
+      if (!userData.componentesExistentes.includes("ram") && !userData.componentesExistentes.includes("memoria")) {
+        appendRecommendation(produtos.RAM);
+      }
+    }
+    appendMessage("Clique nos botões de cada item para ver mais detalhes e acessar os links de compra.", "bot");
+  }
+
+  // Função para adicionar um bloco de recomendação na tela
+  function appendRecommendation(produto) {
+    const recDiv = document.createElement('div');
+    recDiv.classList.add('recommendation');
+    recDiv.innerHTML = `
+      <h3>${produto.nome}</h3>
+      <p>${produto.descricao}</p>
+      <p><strong>Preço:</strong> ${produto.preco}</p>
+      <a href="${produto.link}" target="_blank">Comprar</a>
+    `;
+    chatWindow.appendChild(recDiv);
+  }
+
+  // Eventos de clique e tecla para enviar mensagens
+  sendBtn.addEventListener('click', function() {
+    const input = userInput.value;
+    if(input !== "") {
+      appendMessage(input, 'user');
+      processUserInput(input);
+      userInput.value = "";
+    }
+  });
+
+  userInput.addEventListener('keypress', function(e) {
+    if(e.key === 'Enter') {
+      sendBtn.click();
+    }
+  });
+
+  // Inicializa a conversa quando o modal é aberto
+  pcBuilderButton.addEventListener('click', () => {
+    pcBuilderModal.style.display = 'block';
+    // Verifica se a conversa já foi iniciada
+    if (conversationStep === 0) {
+      appendMessage("Olá! Eu sou o assistente para montar seu PC Gamer.");
+      processUserInput(""); // Inicia o fluxo de perguntas
+    }
+  });
+
+  closePcBuilderButton.addEventListener('click', () => {
+    pcBuilderModal.style.display = 'none';
+    localStorage.setItem('pcBuilderModalOpen', 'false');
+  });
+
+  // Fechar o modal ao clicar fora do conteúdo do modal
+  window.addEventListener('click', (e) => {
+    if (e.target === pcBuilderModal) {
+      pcBuilderModal.style.display = 'none';
+      localStorage.setItem('pcBuilderModalOpen', 'false');
     }
   });
 });
